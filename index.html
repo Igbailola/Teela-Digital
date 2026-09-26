@@ -77,58 +77,27 @@
     <!-- HERO                                                          -->
     <!-- ============================================================ -->
     <section class="hero" id="hero" aria-labelledby="hero-heading">
-      <!-- Full-hero floating & bouncing shapes stage: roams entire hero viewport behind text -->
-      <div class="hero__shapes-stage" id="hero-shapes-stage" aria-label="Teela digital product architecture geometric composition">
+      <!-- Hero floating glassmorphic visual composition (same aesthetic as Let's Talk section) -->
+      <div class="hero__shapes-stage" id="hero-shapes-stage" aria-hidden="true">
         <!-- Ambient ethereal aura backdrop -->
-        <div class="hero__shapes-aura" aria-hidden="true"></div>
+        <div class="hero__shapes-aura"></div>
 
-        <!-- 01 Green Sphere -->
-        <div class="hero-shape hero-shape--01" data-shape="01" data-depth="1.2">
-          <img src="/shapes/shape-01-green-sphere.png" alt="Green sphere 3D element" class="hero-shape__img"
-            width="385" height="385" loading="eager" draggable="false" />
+        <!-- Hero Focal Glass Sculpture (centerpiece framing the hero) -->
+        <div class="hero-focal-element" id="hero-focal-element">
+          <div class="hero-focal-element__sphere">
+            <div class="hero-focal-element__inner-glimmer"></div>
+            <div class="hero-focal-element__ring"></div>
+            <div class="hero-focal-element__pill"></div>
+          </div>
         </div>
 
-        <!-- 02 Blue Column -->
-        <div class="hero-shape hero-shape--02" data-shape="02" data-depth="1.0">
-          <img src="/shapes/shape-02-blue-column.png" alt="Blue architectural column 3D element" class="hero-shape__img"
-            width="564" height="965" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 03 Purple Column -->
-        <div class="hero-shape hero-shape--03" data-shape="03" data-depth="0.85">
-          <img src="/shapes/shape-03-purple-column.png" alt="Purple column 3D element" class="hero-shape__img"
-            width="450" height="971" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 04 Purple Torus Ring -->
-        <div class="hero-shape hero-shape--04" data-shape="04" data-depth="0.95">
-          <img src="/shapes/shape-04-purple-torus.png" alt="Purple torus ring 3D element" class="hero-shape__img"
-            width="917" height="959" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 05 Blue Spiral -->
-        <div class="hero-shape hero-shape--05" data-shape="05" data-depth="1.1">
-          <img src="/shapes/shape-05-blue-spiral.png" alt="Blue spiral coil 3D element" class="hero-shape__img"
-            width="974" height="818" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 06 Purple Star -->
-        <div class="hero-shape hero-shape--06" data-shape="06" data-depth="0.75">
-          <img src="/shapes/shape-06-purple-star.png" alt="Purple glossy star 3D element" class="hero-shape__img"
-            width="909" height="906" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 07 Cyan Metaball -->
-        <div class="hero-shape hero-shape--07" data-shape="07" data-depth="1.3">
-          <img src="/shapes/shape-07-cyan-metaball.png" alt="Cyan fluid metaball 3D element"
-            class="hero-shape__img" width="883" height="605" loading="eager" draggable="false" />
-        </div>
-
-        <!-- 08 Red Droplet Cluster -->
-        <div class="hero-shape hero-shape--08" data-shape="08" data-depth="1.15">
-          <img src="/shapes/shape-08-red-droplet.png" alt="Red organic droplet cluster 3D element"
-            class="hero-shape__img" width="877" height="933" loading="eager" draggable="false" />
-        </div>
+        <!-- Floating companions orbiting around the hero section -->
+        <div class="hero-companion hero-companion--orb hero-companion--top-right" data-speed="1.1"></div>
+        <div class="hero-companion hero-companion--ring hero-companion--top-left" data-speed="1.25"></div>
+        <div class="hero-companion hero-companion--capsule hero-companion--bottom-left" data-speed="0.95"></div>
+        <div class="hero-companion hero-companion--gem hero-companion--bottom-right" data-speed="1.15"></div>
+        <div class="hero-companion hero-companion--orb hero-companion--mid-right" data-speed="0.85"></div>
+        <div class="hero-companion hero-companion--ring hero-companion--mid-left" data-speed="1.05"></div>
       </div>
 
       <div class="container hero__container">
@@ -846,51 +815,50 @@
     <div class="container">
       <!-- Main Footer Grid -->
       <div class="footer__grid">
-        <!-- Col 1: Brand & Philosophy -->
+        <!-- Col 1: Brand, Location & Direct Inquiries -->
         <div class="footer__brand-block">
           <a href="#hero" class="footer__logo" aria-label="Teela Digital Home">TEELA DIGITAL</a>
           <p class="footer__descriptor">Digital Product &amp; Software Company</p>
-          <p class="footer__motto">Ideas deserve to be built well.</p>
+          <p class="footer__motto">Ideas, engineered beautifully.</p>
+
           <div class="footer__location">
             <span class="footer__location-dot" aria-hidden="true"></span>
             <span>Lagos, Nigeria</span>
             <span class="footer__separator">·</span>
             <span>Working globally</span>
           </div>
-        </div>
 
-        <!-- Col 2: Direct Contact Lines -->
-        <div class="footer__contact-block">
-          <span class="footer__col-title">Direct Inquiries</span>
           <div class="footer__contact-info">
-            <a href="tel:+2349077027733" class="footer__contact-link">+234 907 702 7733</a>
-            <a href="tel:+2347080078033" class="footer__contact-link">+234 708 007 8033</a>
+            <span class="footer__col-title">Direct Inquiries</span>
+            <div class="footer__contact-phones">
+              <a href="tel:+2349077027733" class="footer__contact-link">+234 907 702 7733</a>
+              <a href="tel:+2347080078033" class="footer__contact-link">+234 708 007 8033</a>
+            </div>
             <a href="mailto:teeladesignacademy@gmail.com"
               class="footer__contact-link footer__contact-link--mail">teeladesignacademy@gmail.com</a>
           </div>
-          <p class="footer__availability">Mon – Fri · 9:00 – 18:00 WAT</p>
         </div>
 
-        <!-- Col 3: Navigation & Legal Links -->
-        <div class="footer__nav-block">
-          <div class="footer__nav-group">
-            <span class="footer__col-title">Navigation</span>
-            <ul class="footer__links" role="list">
-              <li><a href="#about" class="footer__link">About</a></li>
-              <li><a href="#services" class="footer__link">Services</a></li>
-              <li><a href="#work" class="footer__link">Work</a></li>
-              <li><a href="#journal" class="footer__link">Journal</a></li>
-              <li><a href="#contact" class="footer__link">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer__nav-group">
-            <span class="footer__col-title">Legal</span>
-            <ul class="footer__links" role="list">
-              <li><a href="#" class="footer__link">Privacy</a></li>
-              <li><a href="#" class="footer__link">Terms</a></li>
-              <li><a href="#" class="footer__link">Cookies</a></li>
-            </ul>
-          </div>
+        <!-- Col 2: Navigation Links -->
+        <div class="footer__links-block">
+          <span class="footer__col-title">Navigation</span>
+          <ul class="footer__links" role="list">
+            <li><a href="#about" class="footer__link">About</a></li>
+            <li><a href="#services" class="footer__link">Services</a></li>
+            <li><a href="#work" class="footer__link">Work</a></li>
+            <li><a href="#journal" class="footer__link">Journal</a></li>
+            <li><a href="#contact" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Legal Links -->
+        <div class="footer__links-block">
+          <span class="footer__col-title">Legal</span>
+          <ul class="footer__links" role="list">
+            <li><a href="#" class="footer__link">Privacy</a></li>
+            <li><a href="#" class="footer__link">Terms</a></li>
+            <li><a href="#" class="footer__link">Cookies</a></li>
+          </ul>
         </div>
 
         <!-- Col 4: Stay in the Loop Newsletter Card -->
@@ -922,7 +890,6 @@
       <!-- Footer Bottom Bar -->
       <div class="footer__bottom">
         <p class="footer__copyright">© 2026 Teela Digital. All rights reserved.</p>
-        <p class="footer__tagline"><em class="editorial">Ideas, engineered beautifully.</em></p>
         <a href="#hero" class="footer__back-top" aria-label="Back to top">
           <span>Top</span>
           <span class="footer__back-top-arrow" aria-hidden="true">↑</span>
