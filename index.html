@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Teela Digital — Ideas, engineered beautifully.</title>
+  <meta name="description"
+    content="Teela Digital is a digital product and software company helping ambitious businesses turn ideas into thoughtful, functional digital experiences. Research × Design × Engineering." />
+  <meta name="keywords"
+    content="digital product company, software development, product design, UI UX design, UX research, design system engineering, Lagos Nigeria" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Teela Digital — Ideas, engineered beautifully." />
+  <meta property="og:description"
+    content="A digital product and software company combining research, design, and engineering to build meaningful digital experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/layout.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/sections.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
+  <link rel="stylesheet" href="/src/styles/responsive.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION                                                     -->
+  <!-- ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a href="/" class="nav__logo" aria-label="Teela Digital — Home">
+        TEELA DIGITAL
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+        aria-label="Toggle navigation menu">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu" role="dialog" aria-label="Navigation menu">
+        <div class="nav__menu-inner">
+          <ul class="nav__list" role="list">
+            <li><a href="#about" class="nav__link" data-nav-link>About</a></li>
+            <li><a href="#services" class="nav__link" data-nav-link>Services</a></li>
+            <li><a href="#work" class="nav__link" data-nav-link>Work</a></li>
+            <li><a href="#journal" class="nav__link" data-nav-link>Journal</a></li>
+            <li><a href="#contact" class="nav__link" data-nav-link>Contact</a></li>
+          </ul>
+          <a href="#contact" class="btn btn--primary nav__cta" data-nav-link>Start a project <span
+              class="btn__arrow">↗</span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="main-content">
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                          -->
+    <!-- ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="container hero__container">
+        <div class="hero__layout">
+          <div class="hero__content">
+            <p class="eyebrow hero__eyebrow reveal-up">Digital Product &amp; Software Company</p>
+            <h1 class="hero__heading reveal-up" id="hero-heading">
+              <span class="hero__line">WE DESIGN.</span>
+              <span class="hero__line">WE ENGINEER.</span>
+              <span class="hero__line">WE BUILD <em class="editorial">WHAT'S NEXT.</em></span>
+            </h1>
+            <p class="hero__body reveal-up">
+              Teela is a digital product and software company helping ambitious businesses turn ideas into thoughtful,
+              functional digital experiences.
+            </p>
+            <div class="hero__actions reveal-up">
+              <a href="#contact" class="btn btn--primary">Start a project <span class="btn__arrow">↗</span></a>
+              <a href="#work" class="btn btn--ghost">Explore our work <span
+                  class="btn__arrow btn__arrow--down">↓</span></a>
+            </div>
+          </div>
+
+          <!-- Editorial Floating Geometric Shape System -->
+          <div class="hero__visual hero__visual--shapes" id="hero-visual"
+            aria-label="Teela digital product architecture geometric composition">
+            <div class="hero__shapes-stage" id="hero-shapes-stage">
+              <!-- Ambient ethereal aura backdrop -->
+              <div class="hero__shapes-aura" aria-hidden="true"></div>
+
+              <!-- 01 Pink Sphere (Dominant foreground anchor) -->
+              <div class="hero-shape hero-shape--01" data-shape="01" data-depth="1.2">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/01-pink-sphere.png" alt="Pink sphere geometric element" class="hero-shape__img"
+                  width="185" height="170" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 02 Cyan Cube (Dominant architectural anchor) -->
+              <div class="hero-shape hero-shape--02" data-shape="02" data-depth="1.0">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/02-cyan-cube.png" alt="Cyan cube geometric element" class="hero-shape__img"
+                  width="201" height="168" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 03 Yellow Cone (Dynamic accent) -->
+              <div class="hero-shape hero-shape--03" data-shape="03" data-depth="0.75">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/03-yellow-cone.png" alt="Yellow cone geometric element" class="hero-shape__img"
+                  width="193" height="155" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 04 Blue Cylinder (Midground foundation) -->
+              <div class="hero-shape hero-shape--04" data-shape="04" data-depth="0.9">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/04-blue-cylinder.png" alt="Blue cylinder geometric element" class="hero-shape__img"
+                  width="197" height="203" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 05 Red Pyramid (Angular midground counterpoint) -->
+              <div class="hero-shape hero-shape--05" data-shape="05" data-depth="0.7">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/05-red-pyramid.png" alt="Red pyramid geometric element" class="hero-shape__img"
+                  width="197" height="190" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 06 Lime Cube (Supporting right-side elevation) -->
+              <div class="hero-shape hero-shape--06" data-shape="06" data-depth="1.1">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/06-lime-cube.png" alt="Lime cube geometric element" class="hero-shape__img"
+                  width="189" height="193" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 07 Magenta Rectangular Prism (Dominant vertical soaring element) -->
+              <div class="hero-shape hero-shape--07" data-shape="07" data-depth="1.3">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/07-magenta-rectangular-prism.png" alt="Magenta rectangular prism geometric element"
+                  class="hero-shape__img" width="189" height="230" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 08 Orange Cylinder (Supporting left peripheral anchor) -->
+              <div class="hero-shape hero-shape--08" data-shape="08" data-depth="0.8">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/08-orange-cylinder.png" alt="Orange cylinder geometric element"
+                  class="hero-shape__img" width="177" height="200" loading="eager" draggable="false" />
+              </div>
+
+              <!-- 09 Purple Cube (Deep ambient background anchor) -->
+              <div class="hero-shape hero-shape--09" data-shape="09" data-depth="0.6">
+                <div class="hero-shape__shadow" aria-hidden="true"></div>
+                <img src="/shapes/09-purple-cube.png" alt="Purple cube geometric element" class="hero-shape__img"
+                  width="164" height="203" loading="eager" draggable="false" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- CAPABILITIES MARQUEE                                          -->
+    <!-- ============================================================ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">WEBSITE DEVELOPMENT</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">PRODUCT DESIGN</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">UI/UX DESIGN</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">UX RESEARCH</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">USABILITY TESTING</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">PRODUCT ANALYSIS</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">SOFTWARE DEVELOPMENT</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">DESIGN SYSTEM ENGINEERING</span>
+        <span class="marquee__separator">—</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee__item">WEBSITE DEVELOPMENT</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">PRODUCT DESIGN</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">UI/UX DESIGN</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">UX RESEARCH</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">USABILITY TESTING</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">PRODUCT ANALYSIS</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">SOFTWARE DEVELOPMENT</span>
+        <span class="marquee__separator">—</span>
+        <span class="marquee__item">DESIGN SYSTEM ENGINEERING</span>
+        <span class="marquee__separator">—</span>
+      </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ABOUT                                                         -->
+    <!-- ============================================================ -->
+    <section class="section section--dark about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow eyebrow--inverse reveal-up">About Teela</p>
+          <h2 class="section__heading section__heading--large reveal-up" id="about-heading">
+            GOOD DIGITAL PRODUCTS AREN'T JUST DESIGNED. THEY'RE <em class="editorial">UNDERSTOOD,</em> TESTED AND
+            ENGINEERED.
+          </h2>
+        </div>
+
+        <div class="about__body">
+          <div class="about__text reveal-up">
+            <p>
+              Teela began in 2026 as a design academy and mentorship community helping aspiring designers and developers
+              learn how to build digital products.
+            </p>
+            <p>
+              Today, Teela brings that same design and engineering mindset to businesses, startups and brands looking to
+              create, improve or establish their digital products and presence.
+            </p>
+            <p>
+              We combine design, research and technology to create digital experiences that are useful, purposeful and
+              built for the real world.
+            </p>
+          </div>
+
+          <div class="about__facts reveal-up">
+            <div class="fact">
+              <span class="fact__label">Founded</span>
+              <span class="fact__value">2026</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label">Approach</span>
+              <span class="fact__value">Research → Design → Engineering</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label">Based</span>
+              <span class="fact__value">Lagos, Nigeria</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label">Working</span>
+              <span class="fact__value">Globally</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SERVICES                                                      -->
+    <!-- ============================================================ -->
+    <section class="section services" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow reveal-up">What We Do</p>
+          <h2 class="section__heading reveal-up" id="services-heading">
+            FROM FIRST IDEA TO <em class="editorial">FINAL PRODUCT.</em>
+          </h2>
+          <p class="section__subheading reveal-up">
+            Whether you are establishing your first digital presence or building the next version of your product, Teela
+            brings research, design and engineering together to move the work forward.
+          </p>
+        </div>
+
+        <div class="services__grid">
+          <!-- 01 Website Development -->
+          <article class="service-card glass-card reveal-up" id="service-website-dev" data-delay="0">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">01</span>
+                <span class="service-card__category">Engineering</span>
+              </div>
+              <div class="service-card__motif service-card__motif--web" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="26" height="24" rx="3.5" class="motif-frame" />
+                  <line x1="3" y1="10" x2="29" y2="10" />
+                  <circle cx="7" cy="7" r="0.9" fill="currentColor" />
+                  <circle cx="10.5" cy="7" r="0.9" fill="currentColor" />
+                  <circle cx="14" cy="7" r="0.9" fill="currentColor" />
+                  <rect x="7" y="14" width="8" height="10" rx="1.5" class="motif-col-1" />
+                  <rect x="17" y="14" width="8" height="4.5" rx="1" class="motif-col-2" />
+                  <rect x="17" y="20.5" width="8" height="3.5" rx="1" class="motif-col-3" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Website Development</h3>
+            <p class="service-card__desc">
+              We help businesses establish and elevate their digital presence with fast, responsive and thoughtfully
+              engineered websites that combine visual craft with high technical performance.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Web Platforms</span>
+              <span class="service-card__tag">High Performance</span>
+              <span class="service-card__tag">Responsive Craft</span>
+              <span class="service-card__tag">Modern Stacks</span>
+            </div>
+          </article>
+
+          <!-- 02 Product Design -->
+          <article class="service-card glass-card reveal-up" id="service-product-design" data-delay="1">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">02</span>
+                <span class="service-card__category">Product</span>
+              </div>
+              <div class="service-card__motif service-card__motif--product" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="9" width="18" height="18" rx="2.5" class="motif-layer-back" stroke-dasharray="2.5 2.5"
+                    opacity="0.5" />
+                  <rect x="10" y="5" width="18" height="18" rx="2.5" class="motif-layer-front" />
+                  <circle cx="10" cy="5" r="1.5" fill="currentColor" />
+                  <circle cx="28" cy="5" r="1.5" fill="currentColor" />
+                  <circle cx="10" cy="23" r="1.5" fill="currentColor" />
+                  <circle cx="28" cy="23" r="1.5" fill="currentColor" />
+                  <line x1="14" y1="11" x2="24" y2="11" />
+                  <line x1="14" y1="15" x2="20" y2="15" />
+                  <rect x="14" y="18" width="5" height="2" rx="0.5" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Product Design</h3>
+            <p class="service-card__desc">
+              We turn ideas, requirements and opportunities into clear product experiences — from early concepts and
+              user flows to polished interfaces and production-ready designs.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Product Strategy</span>
+              <span class="service-card__tag">User Flows</span>
+              <span class="service-card__tag">Prototypes</span>
+              <span class="service-card__tag">Design Specs</span>
+            </div>
+          </article>
+
+          <!-- 03 UI/UX Design -->
+          <article class="service-card glass-card reveal-up" id="service-ui-ux" data-delay="2">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">03</span>
+                <span class="service-card__category">Interface</span>
+              </div>
+              <div class="service-card__motif service-card__motif--uiux" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="7" width="24" height="13" rx="6.5" class="motif-track" />
+                  <circle cx="10.5" cy="13.5" r="3.5" class="motif-thumb" />
+                  <path d="M15 15l7.5 12 2.5-3.5 4-1.2L15 15z" class="motif-cursor-pointer" />
+                  <line x1="22.5" y1="22.5" x2="27" y2="27" class="motif-cursor-stem" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">UI/UX Design</h3>
+            <p class="service-card__desc">
+              We design intuitive digital experiences that balance user needs, business goals and visual clarity.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Visual Hierarchy</span>
+              <span class="service-card__tag">Interaction Design</span>
+              <span class="service-card__tag">Micro-interactions</span>
+              <span class="service-card__tag">Figma Systems</span>
+            </div>
+          </article>
+
+          <!-- 04 UX Research -->
+          <article class="service-card glass-card reveal-up" id="service-ux-research" data-delay="3">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">04</span>
+                <span class="service-card__category">Discovery</span>
+              </div>
+              <div class="service-card__motif service-card__motif--research" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="13" cy="13" r="8.5" class="motif-glass" />
+                  <line x1="19.5" y1="19.5" x2="27" y2="27" class="motif-handle" stroke-width="2.2" />
+                  <circle cx="8.5" cy="13" r="1.5" fill="currentColor" class="motif-node motif-node--1" />
+                  <circle cx="13" cy="9.5" r="1.5" fill="currentColor" class="motif-node motif-node--2" />
+                  <circle cx="17.5" cy="14" r="1.5" fill="currentColor" class="motif-node motif-node--3" />
+                  <path d="M8.5 13q2.5 -4.5 4.5 -3.5t4.5 4.5" class="motif-pathway" stroke-dasharray="2 2" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">UX Research</h3>
+            <p class="service-card__desc">
+              We help teams understand their users, identify real problems and make better product decisions through
+              structured research.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">User Interviews</span>
+              <span class="service-card__tag">Field Studies</span>
+              <span class="service-card__tag">Persona Mapping</span>
+              <span class="service-card__tag">Journey Audits</span>
+            </div>
+          </article>
+
+          <!-- 05 Usability Testing -->
+          <article class="service-card glass-card reveal-up" id="service-usability-testing" data-delay="4">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">05</span>
+                <span class="service-card__category">Validation</span>
+              </div>
+              <div class="service-card__motif service-card__motif--testing" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="24" height="24" rx="4" class="motif-device" />
+                  <circle cx="16" cy="16" r="7.5" class="motif-pulse-wave" stroke-dasharray="2 2" opacity="0.4" />
+                  <circle cx="16" cy="16" r="4" class="motif-pulse-core" opacity="0.75" />
+                  <circle cx="16" cy="16" r="1.8" fill="currentColor" class="motif-target" />
+                  <circle cx="23" cy="9" r="4.5" class="motif-badge-bg" fill="#F7F7F4" stroke="currentColor" />
+                  <polyline points="21 9 22.5 10.5 25 7.5" class="motif-badge-check" stroke-width="1.6" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Usability Testing</h3>
+            <p class="service-card__desc">
+              We test digital experiences with users to uncover friction, validate decisions and identify opportunities
+              for improvement.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Evaluative Testing</span>
+              <span class="service-card__tag">Task Completion</span>
+              <span class="service-card__tag">Friction Detection</span>
+              <span class="service-card__tag">Heuristic Review</span>
+            </div>
+          </article>
+
+          <!-- 06 Product Analysis -->
+          <article class="service-card glass-card reveal-up" id="service-product-analysis" data-delay="5">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">06</span>
+                <span class="service-card__category">Intelligence</span>
+              </div>
+              <div class="service-card__motif service-card__motif--analysis" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="26" x2="27" y2="26" class="motif-axis" />
+                  <line x1="5" y1="6" x2="5" y2="26" class="motif-axis" />
+                  <rect x="8" y="17" width="3.5" height="9" rx="1" class="motif-metric-1" />
+                  <rect x="14" y="12" width="3.5" height="14" rx="1" class="motif-metric-2" />
+                  <rect x="20" y="8" width="3.5" height="18" rx="1" class="motif-metric-3" />
+                  <polyline points="9 16 15 11 22 7" class="motif-trendline" stroke-width="1.8" />
+                  <circle cx="22" cy="7" r="1.5" fill="currentColor" class="motif-trendpoint" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Product Analysis</h3>
+            <p class="service-card__desc">
+              We evaluate products, interfaces and user journeys to uncover usability issues, product opportunities and
+              areas for growth.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Metric Telemetry</span>
+              <span class="service-card__tag">Funnel Audits</span>
+              <span class="service-card__tag">Benchmarking</span>
+              <span class="service-card__tag">Growth Insights</span>
+            </div>
+          </article>
+
+          <!-- 07 Software Development -->
+          <article class="service-card glass-card reveal-up" id="service-software-dev" data-delay="6">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">07</span>
+                <span class="service-card__category">Architecture</span>
+              </div>
+              <div class="service-card__motif service-card__motif--dev" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="26" height="22" rx="3.5" class="motif-terminal" />
+                  <polyline points="7 12 11 15 7 18" class="motif-cli-prompt" stroke-width="2" />
+                  <line x1="14" y1="18" x2="19" y2="18" class="motif-cli-cursor" stroke-width="2" />
+                  <line x1="7" y1="22" x2="16" y2="22" opacity="0.4" class="motif-code-1" />
+                  <line x1="18" y1="22" x2="24" y2="22" opacity="0.4" class="motif-code-2" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Software Development</h3>
+            <p class="service-card__desc">
+              We turn designs and ideas into reliable digital experiences through thoughtful software engineering and
+              modern web development.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Full-Stack Systems</span>
+              <span class="service-card__tag">API Architecture</span>
+              <span class="service-card__tag">Cloud Infrastructure</span>
+              <span class="service-card__tag">Clean Codebases</span>
+            </div>
+          </article>
+
+          <!-- 08 Design System Engineering -->
+          <article class="service-card glass-card reveal-up" id="service-design-systems" data-delay="7">
+            <div class="service-card__header">
+              <div class="service-card__meta">
+                <span class="service-card__number">08</span>
+                <span class="service-card__category">Standards</span>
+              </div>
+              <div class="service-card__motif service-card__motif--tokens" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="5" width="8" height="8" rx="2" class="motif-block motif-block--tl" />
+                  <rect x="19" y="5" width="8" height="8" rx="2" class="motif-block motif-block--tr" />
+                  <rect x="5" y="19" width="8" height="8" rx="2" class="motif-block motif-block--bl" />
+                  <rect x="19" y="19" width="8" height="8" rx="2" class="motif-block motif-block--br" />
+                  <line x1="13" y1="9" x2="19" y2="9" stroke-dasharray="2 2" class="motif-wire-h" />
+                  <line x1="13" y1="23" x2="19" y2="23" stroke-dasharray="2 2" class="motif-wire-h" />
+                  <line x1="9" y1="13" x2="9" y2="19" stroke-dasharray="2 2" class="motif-wire-v" />
+                  <line x1="23" y1="13" x2="23" y2="19" stroke-dasharray="2 2" class="motif-wire-v" />
+                  <circle cx="16" cy="16" r="1.5" fill="currentColor" class="motif-hub-dot" />
+                </svg>
+              </div>
+            </div>
+            <h3 class="service-card__title">Design System Engineering</h3>
+            <p class="service-card__desc">
+              We build and engineer scalable design systems for consistency, efficiency and ease of use across products
+              and teams.
+            </p>
+            <div class="service-card__tags" aria-label="Key capabilities">
+              <span class="service-card__tag">Component Libraries</span>
+              <span class="service-card__tag">Design Tokens</span>
+              <span class="service-card__tag">Multi-Platform Scale</span>
+              <span class="service-card__tag">Documentation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SELECTED WORKS                                                -->
+    <!-- ============================================================ -->
+    <section class="section section--dark works" id="work" aria-labelledby="works-heading">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow eyebrow--inverse reveal-up">Selected Work</p>
+          <h2 class="section__heading reveal-up" id="works-heading">
+            PRODUCTS, EXPERIENCES AND DIGITAL WORK <em class="editorial">WE'VE BUILT.</em>
+          </h2>
+          <p class="section__subheading section__subheading--inverse reveal-up">
+            A selection of projects across product design, UX, websites and digital product development.
+          </p>
+        </div>
+
+        <div class="works__grid">
+          <!-- Project 01 -->
+          <article class="work-card reveal-up" id="work-project-01">
+            <div class="work-card__image">
+              <div class="work-card__placeholder">
+                <span>Project image</span>
+              </div>
+            </div>
+            <div class="work-card__info">
+              <div class="work-card__meta">
+                <span class="work-card__category">Coming Soon</span>
+                <span class="work-card__year">2026</span>
+              </div>
+              <h3 class="work-card__title">Project details available soon</h3>
+              <p class="work-card__desc">This project is being prepared for the portfolio. Check back for full case
+                study details.</p>
+            </div>
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <!-- Project 02 -->
+          <article class="work-card reveal-up" id="work-project-02">
+            <div class="work-card__image">
+              <div class="work-card__placeholder">
+                <span>Project image</span>
+              </div>
+            </div>
+            <div class="work-card__info">
+              <div class="work-card__meta">
+                <span class="work-card__category">Coming Soon</span>
+                <span class="work-card__year">2026</span>
+              </div>
+              <h3 class="work-card__title">Project details available soon</h3>
+              <p class="work-card__desc">This project is being prepared for the portfolio. Check back for full case
+                study details.</p>
+            </div>
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <!-- Project 03 -->
+          <article class="work-card reveal-up" id="work-project-03">
+            <div class="work-card__image">
+              <div class="work-card__placeholder">
+                <span>Project image</span>
+              </div>
+            </div>
+            <div class="work-card__info">
+              <div class="work-card__meta">
+                <span class="work-card__category">Coming Soon</span>
+                <span class="work-card__year">2026</span>
+              </div>
+              <h3 class="work-card__title">Project details available soon</h3>
+              <p class="work-card__desc">This project is being prepared for the portfolio. Check back for full case
+                study details.</p>
+            </div>
+            <span class="work-card__arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- BRAND STATEMENT                                               -->
+    <!-- ============================================================ -->
+    <section class="section brand-statement" id="brand-statement" aria-labelledby="brand-statement-heading">
+      <div class="container">
+        <div class="brand-statement__inner reveal-up">
+          <h2 class="brand-statement__heading" id="brand-statement-heading">
+            TECHNOLOGY SHOULD FEEL <em class="editorial">HUMAN.</em>
+          </h2>
+          <p class="brand-statement__body">
+            The best digital products bring together business goals, technology and real human needs. That's where we
+            work.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- PROCESS                                                       -->
+    <!-- ============================================================ -->
+    <section class="section section--dark process" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow eyebrow--inverse reveal-up">Our Process</p>
+          <h2 class="section__heading reveal-up" id="process-heading">
+            FROM IDEA TO <em class="editorial">IMPACT.</em>
+          </h2>
+        </div>
+
+        <!-- Progress line behind steps -->
+        <div class="process__progress-track" aria-hidden="true">
+          <div class="process__progress-fill" id="process-progress-fill"></div>
+        </div>
+
+        <div class="process__grid">
+          <article class="process-step" id="process-step-01" data-process-step="0">
+            <span class="process-step__number">01</span>
+            <h3 class="process-step__title">Discover</h3>
+            <p class="process-step__desc">
+              We learn about your business, users, goals and the opportunity behind the project.
+            </p>
+          </article>
+
+          <article class="process-step" id="process-step-02" data-process-step="1">
+            <span class="process-step__number">02</span>
+            <h3 class="process-step__title">Define</h3>
+            <p class="process-step__desc">
+              We turn what we learn into clear product requirements, priorities and direction.
+            </p>
+          </article>
+
+          <article class="process-step" id="process-step-03" data-process-step="2">
+            <span class="process-step__number">03</span>
+            <h3 class="process-step__title">Design</h3>
+            <p class="process-step__desc">
+              We create thoughtful experiences that make the product intuitive, useful and engaging.
+            </p>
+          </article>
+
+          <article class="process-step" id="process-step-04" data-process-step="3">
+            <span class="process-step__number">04</span>
+            <h3 class="process-step__title">Build</h3>
+            <p class="process-step__desc">
+              We engineer the product and bring the approved experience to life.
+            </p>
+          </article>
+
+          <article class="process-step" id="process-step-05" data-process-step="4">
+            <span class="process-step__number">05</span>
+            <h3 class="process-step__title">Improve</h3>
+            <p class="process-step__desc">
+              We test, learn and refine so the product continues to get better.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- JOURNAL                                                       -->
+    <!-- ============================================================ -->
+    <section class="section journal" id="journal" aria-labelledby="journal-heading">
+      <div class="container">
+        <div class="section__header">
+          <p class="eyebrow reveal-up">Journal</p>
+          <h2 class="section__heading reveal-up" id="journal-heading">
+            THINKING ABOUT <em class="editorial">DIGITAL.</em>
+          </h2>
+          <p class="section__subheading reveal-up">
+            Ideas, observations and practical thinking about product design, UX, technology and building digital
+            products.
+          </p>
+        </div>
+
+        <div class="journal__grid">
+          <article class="journal-card glass-card reveal-up" id="journal-article-01" data-delay="0">
+            <span class="journal-card__category">UX</span>
+            <h3 class="journal-card__title">Why Good UX Starts Before the Interface</h3>
+            <span class="journal-card__date">Coming soon</span>
+            <span class="journal-card__link" aria-hidden="true">Read more →</span>
+          </article>
+
+          <article class="journal-card glass-card reveal-up" id="journal-article-02" data-delay="1">
+            <span class="journal-card__category">Business</span>
+            <h3 class="journal-card__title">What Businesses Should Know Before Building a Website</h3>
+            <span class="journal-card__date">Coming soon</span>
+            <span class="journal-card__link" aria-hidden="true">Read more →</span>
+          </article>
+
+          <article class="journal-card glass-card reveal-up" id="journal-article-03" data-delay="2">
+            <span class="journal-card__category">Product</span>
+            <h3 class="journal-card__title">Designing Digital Products for Real People</h3>
+            <span class="journal-card__date">Coming soon</span>
+            <span class="journal-card__link" aria-hidden="true">Read more →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- FINAL CTA                                                     -->
+    <!-- ============================================================ -->
+    <section class="section section--dark final-cta" id="final-cta" aria-labelledby="final-cta-heading">
+      <div class="container final-cta__container">
+        <!-- Interactive visual focal point: prominent bouncy/floating geometric composition -->
+        <div class="final-cta__visual" aria-hidden="true">
+          <div class="cta-focal-element" id="cta-focal-element">
+            <div class="cta-focal-element__sphere">
+              <div class="cta-focal-element__inner-glimmer"></div>
+              <div class="cta-focal-element__ring"></div>
+              <div class="cta-focal-element__pill"></div>
+            </div>
+          </div>
+          <!-- Supporting light floating companions -->
+          <div class="cta-companion cta-companion--orb" data-float-speed="0.8"></div>
+          <div class="cta-companion cta-companion--ring" data-float-speed="1.2"></div>
+          <div class="cta-companion cta-companion--capsule" data-float-speed="0.6"></div>
+        </div>
+
+        <div class="final-cta__inner reveal-up">
+          <p class="eyebrow eyebrow--inverse">Let's Talk</p>
+          <h2 class="final-cta__heading" id="final-cta-heading">
+            HAVE AN IDEA <em class="editorial">WORTH BUILDING?</em>
+          </h2>
+          <p class="final-cta__body">Let's turn it into something real.</p>
+          <a href="#contact" class="btn btn--accent">Start a project <span class="btn__arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- CONTACT                                                       -->
+    <!-- ============================================================ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__layout">
+          <div class="contact__intro">
+            <h2 class="contact__heading reveal-up" id="contact-heading">
+              Tell us about your <em class="editorial">project.</em>
+            </h2>
+          </div>
+
+          <form class="contact-form reveal-up" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Name</label>
+              <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required
+                maxlength="100" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Work email</label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="you@company.com"
+                required maxlength="254" autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-company" class="form-label">Company</label>
+              <input type="text" id="contact-company" name="company" class="form-input" placeholder="Company name"
+                maxlength="100" autocomplete="organization" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-project-type" class="form-label">Project type</label>
+              <select id="contact-project-type" name="projectType" class="form-select" required>
+                <option value="" disabled selected>Select a project type</option>
+                <option value="website">Website</option>
+                <option value="product-design">Product Design</option>
+                <option value="ui-ux-design">UI/UX Design</option>
+                <option value="ux-research">UX Research</option>
+                <option value="usability-testing">Usability Testing</option>
+                <option value="product-analysis">Product Analysis</option>
+                <option value="software-development">Software Development</option>
+                <option value="design-system-development">Design System Development</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+
+            <div class="form-group form-group--full">
+              <label for="contact-message" class="form-label">Project description</label>
+              <textarea id="contact-message" name="message" class="form-textarea"
+                placeholder="Tell us what you're building, what you're trying to solve, and where you are in the process."
+                required maxlength="2000" rows="4"></textarea>
+            </div>
+
+            <!-- Honeypot — hidden from real users -->
+            <div class="form-group form-group--hp" aria-hidden="true" tabindex="-1">
+              <label for="contact-website">Website</label>
+              <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-group form-group--full form-group--submit">
+              <button type="submit" class="btn btn--primary btn--full" id="contact-submit">
+                <span class="btn__text">Send enquiry <span class="btn__arrow">↗</span></span>
+                <span class="btn__loading" aria-hidden="true">Sending...</span>
+              </button>
+            </div>
+
+            <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                        -->
+  <!-- ============================================================ -->
+  <footer class="footer" id="site-footer" role="contentinfo">
+    <div class="container">
+      <!-- Main Footer Grid -->
+      <div class="footer__grid">
+        <!-- Col 1: Brand & Philosophy -->
+        <div class="footer__brand-block">
+          <a href="#hero" class="footer__logo" aria-label="Teela Digital Home">TEELA DIGITAL</a>
+          <p class="footer__descriptor">Digital Product &amp; Software Company</p>
+          <p class="footer__motto">Ideas deserve to be built well.</p>
+          <div class="footer__location">
+            <span class="footer__location-dot" aria-hidden="true"></span>
+            <span>Lagos, Nigeria</span>
+            <span class="footer__separator">·</span>
+            <span>Working globally</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Direct Contact Lines -->
+        <div class="footer__contact-block">
+          <span class="footer__col-title">Direct Inquiries</span>
+          <div class="footer__contact-info">
+            <a href="tel:+2349077027733" class="footer__contact-link">+234 907 702 7733</a>
+            <a href="tel:+2347080078033" class="footer__contact-link">+234 708 007 8033</a>
+            <a href="mailto:teeladesignacademy@gmail.com"
+              class="footer__contact-link footer__contact-link--mail">teeladesignacademy@gmail.com</a>
+          </div>
+          <p class="footer__availability">Mon – Fri · 9:00 – 18:00 WAT</p>
+        </div>
+
+        <!-- Col 3: Navigation & Legal Links -->
+        <div class="footer__nav-block">
+          <div class="footer__nav-group">
+            <span class="footer__col-title">Navigation</span>
+            <ul class="footer__links" role="list">
+              <li><a href="#about" class="footer__link">About</a></li>
+              <li><a href="#services" class="footer__link">Services</a></li>
+              <li><a href="#work" class="footer__link">Work</a></li>
+              <li><a href="#journal" class="footer__link">Journal</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__nav-group">
+            <span class="footer__col-title">Legal</span>
+            <ul class="footer__links" role="list">
+              <li><a href="#" class="footer__link">Privacy</a></li>
+              <li><a href="#" class="footer__link">Terms</a></li>
+              <li><a href="#" class="footer__link">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 4: Stay in the Loop Newsletter Card -->
+        <div class="footer__newsletter-block">
+          <div class="footer__newsletter-card" id="footer-newsletter">
+            <div class="footer__newsletter-header">
+              <span class="eyebrow eyebrow--inverse">STAY IN THE LOOP</span>
+              <h3 class="footer__newsletter-title">Ideas, insights &amp; updates.</h3>
+              <p class="footer__newsletter-desc">Occasional dispatches on digital craft, architecture and engineering.
+              </p>
+            </div>
+
+            <form class="footer__newsletter-form" id="newsletter-form" novalidate>
+              <div class="footer__newsletter-field">
+                <label for="newsletter-email" class="visually-hidden">Your email address</label>
+                <input type="email" id="newsletter-email" name="email" class="footer__newsletter-input"
+                  placeholder="Your email address" required maxlength="254" autocomplete="email" />
+                <button type="submit" class="btn btn--accent footer__newsletter-submit" id="newsletter-submit">
+                  <span class="btn__text">Join <span class="btn__arrow">↗</span></span>
+                  <span class="btn__loading" aria-hidden="true">...</span>
+                </button>
+              </div>
+              <div class="newsletter-status" id="newsletter-status" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2026 Teela Digital. All rights reserved.</p>
+        <p class="footer__tagline"><em class="editorial">Ideas, engineered beautifully.</em></p>
+        <a href="#hero" class="footer__back-top" aria-label="Back to top">
+          <span>Top</span>
+          <span class="footer__back-top-arrow" aria-hidden="true">↑</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+/* ============================================================
+   LAYOUT
+   Container, grid, and section structure
+   ============================================================ */
+
+/* ---- Container ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* ---- Section ---- */
+.section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+  position: relative;
+}
+
+.section--dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+/* ---- Section header ---- */
+.section__header {
+  margin-bottom: var(--space-3xl);
+  max-width: 900px;
+}
+
+.section__heading {
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 3.5rem);
+  line-height: 1.08;
+  margin-bottom: var(--space-md);
+}
+
+.section__heading--large {
+  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 2.8rem);
+}
+
+.section__subheading {
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+}
+
+.section__subheading--inverse {
+  color: rgba(255, 255, 255, 0.55);
+}

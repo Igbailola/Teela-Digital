@@ -1,0 +1,274 @@
+/* ============================================================
+   ANIMATIONS
+   Motion system: reveals, marquee, parallax, stagger
+   ============================================================ */
+
+
+/* ==========================
+   Marquee
+   ========================== */
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ==========================
+   Scroll Reveal
+   ========================== */
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children — applied via HTML data-delay attributes */
+.reveal-up[data-delay="0"] { transition-delay: 0ms; }
+.reveal-up[data-delay="1"] { transition-delay: 80ms; }
+.reveal-up[data-delay="2"] { transition-delay: 160ms; }
+.reveal-up[data-delay="3"] { transition-delay: 240ms; }
+.reveal-up[data-delay="4"] { transition-delay: 320ms; }
+.reveal-up[data-delay="5"] { transition-delay: 400ms; }
+.reveal-up[data-delay="6"] { transition-delay: 480ms; }
+.reveal-up[data-delay="7"] { transition-delay: 560ms; }
+
+/* Scale reveal variant — for cards */
+.reveal-up.glass-card {
+  transform: translateY(30px) scale(0.97);
+}
+
+.reveal-up.glass-card.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+
+/* ==========================
+   Page load entrance
+   ========================== */
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__content .hero__eyebrow {
+  animation: hero-fade-in 0.9s var(--ease-out) 0.1s both;
+}
+
+.hero__content .hero__heading {
+  animation: hero-fade-in 0.9s var(--ease-out) 0.25s both;
+}
+
+.hero__content .hero__body {
+  animation: hero-fade-in 0.9s var(--ease-out) 0.45s both;
+}
+
+.hero__content .hero__actions {
+  animation: hero-fade-in 0.9s var(--ease-out) 0.6s both;
+}
+
+/* Hero shapes stage entrance */
+.hero__shapes-stage {
+  opacity: 0;
+  animation: hero-shapes-stage-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes hero-shapes-stage-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ==========================
+   Hero line stagger — 3 rows reveal
+   ========================== */
+
+.hero__line {
+  opacity: 0;
+  animation: hero-line-in 0.8s var(--ease-out) both;
+}
+
+.hero__line:nth-child(1) { animation-delay: 0.15s; }
+.hero__line:nth-child(2) { animation-delay: 0.3s; }
+.hero__line:nth-child(3) { animation-delay: 0.45s; }
+
+@keyframes hero-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================
+   Section heading reveal — left wipe accent
+   ========================== */
+
+.section__heading .editorial {
+  display: inline-block;
+  position: relative;
+}
+
+.section__heading .editorial::after {
+  content: '';
+  position: absolute;
+  bottom: 0.05em;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 1.2s var(--ease-out);
+}
+
+.reveal-up.is-visible .editorial::after,
+.is-visible .section__heading .editorial::after {
+  width: 100%;
+}
+
+
+/* ==========================
+   Mobile nav transition
+   ========================== */
+
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nav-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================
+   Brand statement parallax text
+   ========================== */
+
+.brand-statement__heading {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+
+/* ==========================
+   Fact card stagger
+   ========================== */
+
+.about__facts .fact {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.about__facts .fact:nth-child(1) { transition-delay: 0ms; }
+.about__facts .fact:nth-child(2) { transition-delay: 100ms; }
+.about__facts .fact:nth-child(3) { transition-delay: 200ms; }
+.about__facts .fact:nth-child(4) { transition-delay: 300ms; }
+
+.reveal-up.is-visible .fact,
+.about__facts.is-visible .fact {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ==========================
+   Reduced motion
+   ========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .process-step {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__line {
+    opacity: 1;
+  }
+
+  .hero__shapes-stage,
+  .hero-shape {
+    opacity: 1;
+    animation: none;
+    transition: none;
+  }
+
+  .about__facts .fact {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cta-shape,
+  .cta-focal-element,
+  .cta-companion,
+  .cta-focal-element__ring {
+    animation: none;
+    transform: none;
+  }
+
+  .section__heading .editorial::after {
+    width: 100%;
+    transition: none;
+  }
+}
