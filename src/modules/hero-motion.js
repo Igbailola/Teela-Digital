@@ -1,112 +1,103 @@
 /* ============================================================
-   HERO MOTION — FREE BOUNCING GEOMETRIC SHAPES & REAL SHADOWS
-   - True 2D physics engine: shapes glide and bounce freely around the hero
-   - Elastic boundary collisions against hero stage boundaries
-   - Dynamic real directional & contact shadows
-   - Interactive pointer drag & throw / fling with momentum
-   - Proximity cursor repulsion (gentle magnetic nudge)
-   - Accessibility: honors prefers-reduced-motion
+   HERO MOTION — 3D GEOMETRIC SHAPES VIEWPORT PHYSICS & BOUNCING
+   - 8 transparent geometric shapes floating & bouncing freely
+     all around the hero section and among the hero text
+   - Strictly contained within the hero viewport (never outside view)
+   - Natural elastic boundary collisions on all 4 edges
+   - Soft inter-shape separation so shapes stay breathable
+   - Interactive pointer drag & fling with momentum
+   - Proximity cursor repulsion
+   - Respects prefers-reduced-motion
    ============================================================ */
 
-const SHAPES_DATA = [
+const SHAPES_CONFIG = [
   {
     id: '01',
-    selector: '.hero-shape--01', // Pink Sphere (Dominant foreground)
-    initX: 0.46,
-    initY: 0.22,
-    vx: 32,
-    vy: -24,
+    selector: '.hero-shape--01', // Green Sphere
+    initX: 0.72,
+    initY: 0.15,
+    vx: -38,
+    vy: 32,
     rot: -4,
-    vRot: 3.5,
+    vRot: 2.2,
     depth: 1.2
   },
   {
     id: '02',
-    selector: '.hero-shape--02', // Cyan Cube (Dominant architectural)
-    initX: 0.16,
-    initY: 0.42,
-    vx: -28,
-    vy: 28,
-    rot: 6,
-    vRot: -3.0,
+    selector: '.hero-shape--02', // Blue Column
+    initX: 0.88,
+    initY: 0.55,
+    vx: -34,
+    vy: -36,
+    rot: 4,
+    vRot: -1.6,
     depth: 1.0
   },
   {
     id: '03',
-    selector: '.hero-shape--03', // Yellow Cone (Dynamic accent)
-    initX: 0.68,
-    initY: 0.08,
-    vx: 34,
-    vy: 24,
-    rot: 14,
-    vRot: 4.5,
-    depth: 0.75
+    selector: '.hero-shape--03', // Purple Column
+    initX: 0.08,
+    initY: 0.70,
+    vx: 40,
+    vy: -32,
+    rot: -6,
+    vRot: 1.5,
+    depth: 0.85
   },
   {
     id: '04',
-    selector: '.hero-shape--04', // Blue Cylinder (Midground foundation)
-    initX: 0.50,
-    initY: 0.54,
-    vx: -24,
-    vy: -30,
-    rot: -6,
-    vRot: -2.5,
-    depth: 0.9
+    selector: '.hero-shape--04', // Purple Torus Ring
+    initX: 0.38,
+    initY: 0.18,
+    vx: 36,
+    vy: 38,
+    rot: 12,
+    vRot: 2.8,
+    depth: 0.95
   },
   {
     id: '05',
-    selector: '.hero-shape--05', // Red Pyramid (Angular counterpoint)
-    initX: 0.08,
-    initY: 0.64,
-    vx: 28,
-    vy: -26,
-    rot: 8,
-    vRot: 4.0,
-    depth: 0.7
-  },
-  {
-    id: '06',
-    selector: '.hero-shape--06', // Lime Cube (Right elevation)
-    initX: 0.75,
-    initY: 0.38,
-    vx: -32,
-    vy: -22,
-    rot: -12,
-    vRot: -3.8,
+    selector: '.hero-shape--05', // Blue Spiral
+    initX: 0.84,
+    initY: 0.14,
+    vx: -40,
+    vy: 34,
+    rot: -10,
+    vRot: -2.5,
     depth: 1.1
   },
   {
+    id: '06',
+    selector: '.hero-shape--06', // Purple Star
+    initX: 0.06,
+    initY: 0.20,
+    vx: 38,
+    vy: 36,
+    rot: 8,
+    vRot: 2.6,
+    depth: 0.75
+  },
+  {
     id: '07',
-    selector: '.hero-shape--07', // Magenta Prism (Dominant vertical soaring)
-    initX: 0.28,
-    initY: 0.06,
-    vx: 26,
-    vy: 30,
-    rot: -8,
-    vRot: 2.8,
+    selector: '.hero-shape--07', // Cyan Metaball
+    initX: 0.44,
+    initY: 0.65,
+    vx: -36,
+    vy: -38,
+    rot: -5,
+    vRot: -1.8,
     depth: 1.3
   },
   {
     id: '08',
-    selector: '.hero-shape--08', // Orange Cylinder (Left peripheral anchor)
-    initX: 0.04,
-    initY: 0.20,
-    vx: -22,
-    vy: 26,
-    rot: 12,
-    vRot: -2.8,
-    depth: 0.8
-  },
-  {
-    id: '09',
-    selector: '.hero-shape--09', // Purple Cube (Deep ambient background)
-    initX: 0.68,
-    initY: 0.70,
-    vx: 26,
-    vy: 20,
-    rot: -15,
-    vRot: 2.2,
-    depth: 0.6
+    selector: '.hero-shape--08', // Red Droplet Cluster
+    initX: 0.66,
+    initY: 0.74,
+    vx: -34,
+    vy: -30,
+    rot: 6,
+    vRot: 2.0,
+    depth: 1.15
   }
 ];
 
@@ -115,38 +106,46 @@ export function initHeroMotion() {
   const stage = document.getElementById('hero-shapes-stage');
   if (!heroSection || !stage) return;
 
-  let stageRect = stage.getBoundingClientRect();
-  let stageW = stageRect.width || 620;
-  let stageH = stageRect.height || 580;
+  function getBounds() {
+    const rect = heroSection.getBoundingClientRect();
+    return {
+      w: rect.width || window.innerWidth,
+      h: rect.height || window.innerHeight,
+      minX: 16,
+      minY: 96, // Safely below navbar
+      maxYPadding: 24
+    };
+  }
+
+  let bounds = getBounds();
 
   // Initialize shape instances
   const shapes = [];
 
-  SHAPES_DATA.forEach((data) => {
-    const el = stage.querySelector(data.selector);
+  SHAPES_CONFIG.forEach((cfg) => {
+    const el = stage.querySelector(cfg.selector);
     if (!el) return;
 
-    const shadowEl = el.querySelector('.hero-shape__shadow');
-    const shapeW = el.offsetWidth || (data.selector.includes('01') ? 165 : 135);
-    const shapeH = el.offsetHeight || (data.selector.includes('07') ? 170 : 135);
+    const w = el.offsetWidth || 120;
+    const h = el.offsetHeight || 120;
 
-    // Initial position in pixels
-    const x = Math.max(0, Math.min(stageW - shapeW, data.initX * (stageW - shapeW)));
-    const y = Math.max(0, Math.min(stageH - shapeH, data.initY * (stageH - shapeH)));
+    const maxX = Math.max(bounds.minX, bounds.w - w - bounds.minX);
+    const maxY = Math.max(bounds.minY, bounds.h - h - bounds.maxYPadding);
+
+    const x = Math.max(bounds.minX, Math.min(maxX, bounds.minX + cfg.initX * (maxX - bounds.minX)));
+    const y = Math.max(bounds.minY, Math.min(maxY, bounds.minY + cfg.initY * (maxY - bounds.minY)));
 
     const item = {
       el,
-      shadowEl,
-      w: shapeW,
-      h: shapeH,
+      w,
+      h,
       x,
       y,
-      vx: data.vx,
-      vy: data.vy,
-      rot: data.rot,
-      vRot: data.vRot,
-      depth: data.depth,
-      origZ: el.style.zIndex || window.getComputedStyle(el).zIndex,
+      vx: cfg.vx,
+      vy: cfg.vy,
+      rot: cfg.rot,
+      vRot: cfg.vRot,
+      depth: cfg.depth,
       isDragging: false,
       dragOffsetX: 0,
       dragOffsetY: 0,
@@ -158,108 +157,99 @@ export function initHeroMotion() {
     };
 
     shapes.push(item);
-
-    // Set initial transform
-    el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${item.rot.toFixed(2)}deg) scale(1)`;
+    el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${item.rot.toFixed(1)}deg)`;
   });
 
-  if (shapes.length === 0) return;
-
-  // Check reduced motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) {
-    shapes.forEach((s) => {
-      s.el.style.transform = `translate3d(${s.x.toFixed(1)}px, ${s.y.toFixed(1)}px, 0) rotate(${s.rot.toFixed(1)}deg)`;
+  // Handle Resize
+  window.addEventListener('resize', () => {
+    bounds = getBounds();
+    shapes.forEach((shape) => {
+      shape.w = shape.el.offsetWidth || shape.w;
+      shape.h = shape.el.offsetHeight || shape.h;
+      const maxX = Math.max(bounds.minX, bounds.w - shape.w - bounds.minX);
+      const maxY = Math.max(bounds.minY, bounds.h - shape.h - bounds.maxYPadding);
+      shape.x = Math.max(bounds.minX, Math.min(maxX, shape.x));
+      shape.y = Math.max(bounds.minY, Math.min(maxY, shape.y));
     });
-    return;
-  }
+  }, { passive: true });
 
-  // Update bounds on window resize
-  function updateBounds() {
-    stageRect = stage.getBoundingClientRect();
-    stageW = stageRect.width || 620;
-    stageH = stageRect.height || 580;
-
-    shapes.forEach((s) => {
-      s.w = s.el.offsetWidth || s.w;
-      s.h = s.el.offsetHeight || s.h;
-      // Clamp within new stage dimensions
-      s.x = Math.max(0, Math.min(Math.max(10, stageW - s.w), s.x));
-      s.y = Math.max(0, Math.min(Math.max(10, stageH - s.h), s.y));
-    });
-  }
-
-  window.addEventListener('resize', updateBounds, { passive: true });
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
 
   // ----------------------------------------------------
-  // INTERACTIVE DRAG & TOSS (FLING) PHYSICS
+  // INTERACTIVE POINTER DRAG & FLING
   // ----------------------------------------------------
-  let activeDragShape = null;
+  let activeDrag = null;
 
   shapes.forEach((shape) => {
     shape.el.addEventListener('pointerdown', (e) => {
       e.preventDefault();
-      activeDragShape = shape;
+      activeDrag = shape;
       shape.isDragging = true;
-      shape.el.style.zIndex = '120';
-      shape.targetScale = 1.06;
+      shape.targetScale = 1.08;
+      shape.el.style.zIndex = '20';
 
-      const rect = shape.el.getBoundingClientRect();
-      shape.dragOffsetX = e.clientX - rect.left;
-      shape.dragOffsetY = e.clientY - rect.top;
+      const heroRect = heroSection.getBoundingClientRect();
+      const pointerX = e.clientX - heroRect.left;
+      const pointerY = e.clientY - heroRect.top;
 
+      shape.dragOffsetX = pointerX - shape.x;
+      shape.dragOffsetY = pointerY - shape.y;
       shape.lastDragX = e.clientX;
       shape.lastDragY = e.clientY;
       shape.lastDragTime = performance.now();
-
-      stage.setPointerCapture(e.pointerId);
+      shape.vx = 0;
+      shape.vy = 0;
     });
   });
 
   window.addEventListener('pointermove', (e) => {
-    if (!activeDragShape) return;
+    if (!activeDrag) return;
 
-    stageRect = stage.getBoundingClientRect();
+    const heroRect = heroSection.getBoundingClientRect();
+    const pointerX = e.clientX - heroRect.left;
+    const pointerY = e.clientY - heroRect.top;
+
+    const minX = bounds.minX;
+    const maxX = Math.max(minX, bounds.w - activeDrag.w - minX);
+    const minY = bounds.minY;
+    const maxY = Math.max(minY, bounds.h - activeDrag.h - bounds.maxYPadding);
+
+    activeDrag.x = Math.max(minX, Math.min(maxX, pointerX - activeDrag.dragOffsetX));
+    activeDrag.y = Math.max(minY, Math.min(maxY, pointerY - activeDrag.dragOffsetY));
+
     const now = performance.now();
-    const dt = Math.max(0.001, (now - activeDragShape.lastDragTime) / 1000);
+    const dt = Math.max(1, now - activeDrag.lastDragTime) / 1000;
+    const instVx = (e.clientX - activeDrag.lastDragX) / dt;
+    const instVy = (e.clientY - activeDrag.lastDragY) / dt;
 
-    const newX = e.clientX - stageRect.left - activeDragShape.dragOffsetX;
-    const newY = e.clientY - stageRect.top - activeDragShape.dragOffsetY;
+    activeDrag.vx = activeDrag.vx * 0.4 + instVx * 0.6;
+    activeDrag.vy = activeDrag.vy * 0.4 + instVy * 0.6;
 
-    // Track fling velocity (pixels/second)
-    const instantVx = (e.clientX - activeDragShape.lastDragX) / dt;
-    const instantVy = (e.clientY - activeDragShape.lastDragY) / dt;
-
-    activeDragShape.vx = instantVx * 0.75 + activeDragShape.vx * 0.25;
-    activeDragShape.vy = instantVy * 0.75 + activeDragShape.vy * 0.25;
-
-    activeDragShape.x = Math.max(0, Math.min(stageW - activeDragShape.w, newX));
-    activeDragShape.y = Math.max(0, Math.min(stageH - activeDragShape.h, newY));
-
-    activeDragShape.lastDragX = e.clientX;
-    activeDragShape.lastDragY = e.clientY;
-    activeDragShape.lastDragTime = now;
+    activeDrag.lastDragX = e.clientX;
+    activeDrag.lastDragY = e.clientY;
+    activeDrag.lastDragTime = now;
   });
 
   function endDrag() {
-    if (!activeDragShape) return;
-    activeDragShape.isDragging = false;
-    activeDragShape.targetScale = 1;
-    activeDragShape.el.style.zIndex = activeDragShape.origZ;
+    if (!activeDrag) return;
+    activeDrag.isDragging = false;
+    activeDrag.targetScale = 1;
+    activeDrag.el.style.zIndex = '1';
 
-    // Clamp fling speed so it bounces lively but doesn't vanish
+    // Clamp fling velocity
     const maxFling = 280;
-    activeDragShape.vx = Math.max(-maxFling, Math.min(maxFling, activeDragShape.vx));
-    activeDragShape.vy = Math.max(-maxFling, Math.min(maxFling, activeDragShape.vy));
+    activeDrag.vx = Math.max(-maxFling, Math.min(maxFling, activeDrag.vx));
+    activeDrag.vy = Math.max(-maxFling, Math.min(maxFling, activeDrag.vy));
 
-    // Ensure minimum bounce velocity if released gently
-    const speed = Math.hypot(activeDragShape.vx, activeDragShape.vy);
-    if (speed < 30) {
-      activeDragShape.vx = (Math.random() - 0.5) * 60;
-      activeDragShape.vy = (Math.random() - 0.5) * 60;
+    // Ensure baseline motion on gentle release
+    const speed = Math.hypot(activeDrag.vx, activeDrag.vy);
+    if (speed < 24) {
+      activeDrag.vx = (Math.random() - 0.5) * 70;
+      activeDrag.vy = (Math.random() - 0.5) * 70;
     }
 
-    activeDragShape = null;
+    activeDrag = null;
   }
 
   window.addEventListener('pointerup', endDrag);
@@ -268,22 +258,22 @@ export function initHeroMotion() {
   // ----------------------------------------------------
   // CURSOR PROXIMITY REPULSION (GENTLE NUDGE)
   // ----------------------------------------------------
-  let mouseStageX = -9999;
-  let mouseStageY = -9999;
+  let mouseX = -9999;
+  let mouseY = -9999;
 
-  stage.addEventListener('mousemove', (e) => {
-    stageRect = stage.getBoundingClientRect();
-    mouseStageX = e.clientX - stageRect.left;
-    mouseStageY = e.clientY - stageRect.top;
+  heroSection.addEventListener('mousemove', (e) => {
+    const heroRect = heroSection.getBoundingClientRect();
+    mouseX = e.clientX - heroRect.left;
+    mouseY = e.clientY - heroRect.top;
   }, { passive: true });
 
-  stage.addEventListener('mouseleave', () => {
-    mouseStageX = -9999;
-    mouseStageY = -9999;
+  heroSection.addEventListener('mouseleave', () => {
+    mouseX = -9999;
+    mouseY = -9999;
   });
 
   // ----------------------------------------------------
-  // ANIMATION LOOP (PHYSICS & BOUNCE ENGINE)
+  // ANIMATION LOOP — FREE BOUNCING ALL AROUND HERO SECTION
   // ----------------------------------------------------
   let isInView = true;
   let rafId = null;
@@ -316,98 +306,118 @@ export function initHeroMotion() {
     const dt = Math.min(0.04, Math.max(0.001, (now - lastTime) / 1000));
     lastTime = now;
 
+    // 1. Soft inter-shape separation so shapes stay breathable all around
+    for (let i = 0; i < shapes.length; i++) {
+      for (let j = i + 1; j < shapes.length; j++) {
+        const sA = shapes[i];
+        const sB = shapes[j];
+        if (sA.isDragging || sB.isDragging) continue;
+
+        const cAx = sA.x + sA.w * 0.5;
+        const cAy = sA.y + sA.h * 0.5;
+        const cBx = sB.x + sB.w * 0.5;
+        const cBy = sB.y + sB.h * 0.5;
+
+        const dx = cBx - cAx;
+        const dy = cBy - cAy;
+        const dist = Math.hypot(dx, dy);
+        const minDist = (sA.w + sB.w) * 0.55;
+
+        if (dist > 0 && dist < minDist) {
+          const force = ((minDist - dist) / minDist) * 40;
+          const nx = dx / dist;
+          const ny = dy / dist;
+
+          sA.vx -= nx * force * dt;
+          sA.vy -= ny * force * dt;
+          sB.vx += nx * force * dt;
+          sB.vy += ny * force * dt;
+        }
+      }
+    }
+
+    // 2. Update shapes motion & free boundary bouncing
     shapes.forEach((shape) => {
-      // Smooth scale interpolation
       shape.currentScale += (shape.targetScale - shape.currentScale) * 0.15;
 
       if (!shape.isDragging) {
         // Cursor proximity nudge
-        if (mouseStageX > -1000) {
+        if (mouseX > -1000) {
           const centerX = shape.x + shape.w * 0.5;
           const centerY = shape.y + shape.h * 0.5;
-          const dx = centerX - mouseStageX;
-          const dy = centerY - mouseStageY;
+          const dx = centerX - mouseX;
+          const dy = centerY - mouseY;
           const dist = Math.hypot(dx, dy);
-          const pushRadius = 110;
+          const pushRadius = 130;
 
           if (dist > 0 && dist < pushRadius) {
-            const force = ((pushRadius - dist) / pushRadius) * 45;
+            const force = ((pushRadius - dist) / pushRadius) * 50;
             shape.vx += (dx / dist) * force * dt;
             shape.vy += (dy / dist) * force * dt;
           }
         }
 
-        // Apply velocity
+        // Apply velocity & rotation freely
         shape.x += shape.vx * dt;
         shape.y += shape.vy * dt;
         shape.rot += shape.vRot * dt;
 
-        // Bouncing against stage boundaries
-        const maxX = Math.max(0, stageW - shape.w);
-        const maxY = Math.max(0, stageH - shape.h);
+        // Viewport Boundaries
+        const minX = bounds.minX;
+        const maxX = Math.max(minX, bounds.w - shape.w - minX);
+        const minY = bounds.minY;
+        const maxY = Math.max(minY, bounds.h - shape.h - bounds.maxYPadding);
 
-        // Left wall bounce
-        if (shape.x <= 0) {
-          shape.x = 0;
+        // Left wall elastic bounce
+        if (shape.x <= minX) {
+          shape.x = minX;
           shape.vx = Math.abs(shape.vx);
-          shape.vRot += (Math.random() - 0.5) * 4;
+          shape.vy += (Math.random() - 0.5) * 10;
+          shape.vRot += (Math.random() - 0.5) * 3;
         }
-        // Right wall bounce
+        // Right wall elastic bounce
         else if (shape.x >= maxX) {
           shape.x = maxX;
           shape.vx = -Math.abs(shape.vx);
-          shape.vRot += (Math.random() - 0.5) * 4;
+          shape.vy += (Math.random() - 0.5) * 10;
+          shape.vRot += (Math.random() - 0.5) * 3;
         }
 
-        // Top wall bounce
-        if (shape.y <= 0) {
-          shape.y = 0;
+        // Top wall elastic bounce (stay below navbar)
+        if (shape.y <= minY) {
+          shape.y = minY;
           shape.vy = Math.abs(shape.vy);
-          shape.vRot += (Math.random() - 0.5) * 4;
+          shape.vx += (Math.random() - 0.5) * 10;
+          shape.vRot += (Math.random() - 0.5) * 3;
         }
-        // Bottom wall bounce
+        // Bottom wall elastic bounce (stay above marquee)
         else if (shape.y >= maxY) {
           shape.y = maxY;
           shape.vy = -Math.abs(shape.vy);
-          shape.vRot += (Math.random() - 0.5) * 4;
+          shape.vx += (Math.random() - 0.5) * 10;
+          shape.vRot += (Math.random() - 0.5) * 3;
         }
 
-        // Regulate cruising velocity: keep smooth & continuous floating
+        // Velocity cruise regulation — maintains lively free bouncing
         const currentSpeed = Math.hypot(shape.vx, shape.vy);
-        const minSpeed = 24;
-        const maxCruise = 70;
+        const minSpeed = 32;
+        const maxCruise = 65;
 
         if (currentSpeed < minSpeed && currentSpeed > 0) {
           const boost = minSpeed / currentSpeed;
-          shape.vx *= 1 + (boost - 1) * 0.05;
-          shape.vy *= 1 + (boost - 1) * 0.05;
+          shape.vx *= 1 + (boost - 1) * 0.08;
+          shape.vy *= 1 + (boost - 1) * 0.08;
         } else if (currentSpeed > maxCruise) {
-          // Gently damp after high fling
           shape.vx *= 0.985;
           shape.vy *= 0.985;
         }
 
-        // Keep rotation gentle
-        shape.vRot = Math.max(-12, Math.min(12, shape.vRot * 0.998));
+        // Gentle rotational friction
+        shape.vRot = Math.max(-10, Math.min(10, shape.vRot * 0.998));
       }
 
-      // Render shape transform
+      // Render shape transform (smooth subpixel translate3d)
       shape.el.style.transform = `translate3d(${shape.x.toFixed(2)}px, ${shape.y.toFixed(2)}px, 0) rotate(${shape.rot.toFixed(2)}deg) scale(${shape.currentScale.toFixed(3)})`;
-
-      // Real dynamic shadow response: adjusts with height and lateral position
-      if (shape.shadowEl) {
-        const heightFraction = Math.max(0, Math.min(1, shape.y / Math.max(1, stageH - shape.h)));
-        // When object bounces down near bottom: shadow is sharper & darker; when high up: softer & slightly wider
-        const shadowScaleX = 0.85 + (1 - heightFraction) * 0.35;
-        const shadowScaleY = 0.9 + (1 - heightFraction) * 0.25;
-        const shadowOpacity = 0.55 + heightFraction * 0.35;
-
-        // Directional shadow shift matching top-left keylight
-        const shadowOffsetX = ((shape.x / Math.max(1, stageW)) - 0.5) * 12;
-
-        shape.shadowEl.style.transform = `translate3d(${shadowOffsetX.toFixed(1)}px, 0, 0) scale(${shadowScaleX.toFixed(2)}, ${shadowScaleY.toFixed(2)})`;
-        shape.shadowEl.style.opacity = shadowOpacity.toFixed(2);
-      }
     });
 
     rafId = requestAnimationFrame(tick);

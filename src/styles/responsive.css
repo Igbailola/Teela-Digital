@@ -221,25 +221,26 @@
   }
 
   .cta-focal-element {
-    width: 170px;
-    height: 170px;
-    margin-left: -85px;
-    margin-top: -85px;
+    width: 220px;
+    height: 220px;
+    margin-left: -110px;
+    margin-top: -110px;
     opacity: 0.85;
   }
 
-  .cta-companion--capsule {
+  .cta-companion--capsule,
+  .cta-companion--gem {
     display: none;
   }
 
   .cta-companion--orb {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
   }
 
   .cta-companion--ring {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
   }
 
   /* Footer */

@@ -77,96 +77,76 @@
     <!-- HERO                                                          -->
     <!-- ============================================================ -->
     <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <!-- Full-hero floating & bouncing shapes stage: roams entire hero viewport behind text -->
+      <div class="hero__shapes-stage" id="hero-shapes-stage" aria-label="Teela digital product architecture geometric composition">
+        <!-- Ambient ethereal aura backdrop -->
+        <div class="hero__shapes-aura" aria-hidden="true"></div>
+
+        <!-- 01 Green Sphere -->
+        <div class="hero-shape hero-shape--01" data-shape="01" data-depth="1.2">
+          <img src="/shapes/shape-01-green-sphere.png" alt="Green sphere 3D element" class="hero-shape__img"
+            width="385" height="385" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 02 Blue Column -->
+        <div class="hero-shape hero-shape--02" data-shape="02" data-depth="1.0">
+          <img src="/shapes/shape-02-blue-column.png" alt="Blue architectural column 3D element" class="hero-shape__img"
+            width="564" height="965" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 03 Purple Column -->
+        <div class="hero-shape hero-shape--03" data-shape="03" data-depth="0.85">
+          <img src="/shapes/shape-03-purple-column.png" alt="Purple column 3D element" class="hero-shape__img"
+            width="450" height="971" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 04 Purple Torus Ring -->
+        <div class="hero-shape hero-shape--04" data-shape="04" data-depth="0.95">
+          <img src="/shapes/shape-04-purple-torus.png" alt="Purple torus ring 3D element" class="hero-shape__img"
+            width="917" height="959" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 05 Blue Spiral -->
+        <div class="hero-shape hero-shape--05" data-shape="05" data-depth="1.1">
+          <img src="/shapes/shape-05-blue-spiral.png" alt="Blue spiral coil 3D element" class="hero-shape__img"
+            width="974" height="818" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 06 Purple Star -->
+        <div class="hero-shape hero-shape--06" data-shape="06" data-depth="0.75">
+          <img src="/shapes/shape-06-purple-star.png" alt="Purple glossy star 3D element" class="hero-shape__img"
+            width="909" height="906" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 07 Cyan Metaball -->
+        <div class="hero-shape hero-shape--07" data-shape="07" data-depth="1.3">
+          <img src="/shapes/shape-07-cyan-metaball.png" alt="Cyan fluid metaball 3D element"
+            class="hero-shape__img" width="883" height="605" loading="eager" draggable="false" />
+        </div>
+
+        <!-- 08 Red Droplet Cluster -->
+        <div class="hero-shape hero-shape--08" data-shape="08" data-depth="1.15">
+          <img src="/shapes/shape-08-red-droplet.png" alt="Red organic droplet cluster 3D element"
+            class="hero-shape__img" width="877" height="933" loading="eager" draggable="false" />
+        </div>
+      </div>
+
       <div class="container hero__container">
-        <div class="hero__layout">
-          <div class="hero__content">
-            <p class="eyebrow hero__eyebrow reveal-up">Digital Product &amp; Software Company</p>
-            <h1 class="hero__heading reveal-up" id="hero-heading">
-              <span class="hero__line">WE DESIGN.</span>
-              <span class="hero__line">WE ENGINEER.</span>
-              <span class="hero__line">WE BUILD <em class="editorial">WHAT'S NEXT.</em></span>
-            </h1>
-            <p class="hero__body reveal-up">
-              Teela is a digital product and software company helping ambitious businesses turn ideas into thoughtful,
-              functional digital experiences.
-            </p>
-            <div class="hero__actions reveal-up">
-              <a href="#contact" class="btn btn--primary">Start a project <span class="btn__arrow">↗</span></a>
-              <a href="#work" class="btn btn--ghost">Explore our work <span
-                  class="btn__arrow btn__arrow--down">↓</span></a>
-            </div>
-          </div>
-
-          <!-- Editorial Floating Geometric Shape System -->
-          <div class="hero__visual hero__visual--shapes" id="hero-visual"
-            aria-label="Teela digital product architecture geometric composition">
-            <div class="hero__shapes-stage" id="hero-shapes-stage">
-              <!-- Ambient ethereal aura backdrop -->
-              <div class="hero__shapes-aura" aria-hidden="true"></div>
-
-              <!-- 01 Pink Sphere (Dominant foreground anchor) -->
-              <div class="hero-shape hero-shape--01" data-shape="01" data-depth="1.2">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/01-pink-sphere.png" alt="Pink sphere geometric element" class="hero-shape__img"
-                  width="185" height="170" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 02 Cyan Cube (Dominant architectural anchor) -->
-              <div class="hero-shape hero-shape--02" data-shape="02" data-depth="1.0">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/02-cyan-cube.png" alt="Cyan cube geometric element" class="hero-shape__img"
-                  width="201" height="168" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 03 Yellow Cone (Dynamic accent) -->
-              <div class="hero-shape hero-shape--03" data-shape="03" data-depth="0.75">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/03-yellow-cone.png" alt="Yellow cone geometric element" class="hero-shape__img"
-                  width="193" height="155" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 04 Blue Cylinder (Midground foundation) -->
-              <div class="hero-shape hero-shape--04" data-shape="04" data-depth="0.9">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/04-blue-cylinder.png" alt="Blue cylinder geometric element" class="hero-shape__img"
-                  width="197" height="203" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 05 Red Pyramid (Angular midground counterpoint) -->
-              <div class="hero-shape hero-shape--05" data-shape="05" data-depth="0.7">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/05-red-pyramid.png" alt="Red pyramid geometric element" class="hero-shape__img"
-                  width="197" height="190" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 06 Lime Cube (Supporting right-side elevation) -->
-              <div class="hero-shape hero-shape--06" data-shape="06" data-depth="1.1">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/06-lime-cube.png" alt="Lime cube geometric element" class="hero-shape__img"
-                  width="189" height="193" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 07 Magenta Rectangular Prism (Dominant vertical soaring element) -->
-              <div class="hero-shape hero-shape--07" data-shape="07" data-depth="1.3">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/07-magenta-rectangular-prism.png" alt="Magenta rectangular prism geometric element"
-                  class="hero-shape__img" width="189" height="230" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 08 Orange Cylinder (Supporting left peripheral anchor) -->
-              <div class="hero-shape hero-shape--08" data-shape="08" data-depth="0.8">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/08-orange-cylinder.png" alt="Orange cylinder geometric element"
-                  class="hero-shape__img" width="177" height="200" loading="eager" draggable="false" />
-              </div>
-
-              <!-- 09 Purple Cube (Deep ambient background anchor) -->
-              <div class="hero-shape hero-shape--09" data-shape="09" data-depth="0.6">
-                <div class="hero-shape__shadow" aria-hidden="true"></div>
-                <img src="/shapes/09-purple-cube.png" alt="Purple cube geometric element" class="hero-shape__img"
-                  width="164" height="203" loading="eager" draggable="false" />
-              </div>
-            </div>
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow reveal-up">Digital Product &amp; Software Company</p>
+          <h1 class="hero__heading reveal-up" id="hero-heading">
+            <span class="hero__line">WE DESIGN.</span>
+            <span class="hero__line">WE ENGINEER.</span>
+            <span class="hero__line">WE BUILD <em class="editorial">WHAT'S NEXT.</em></span>
+          </h1>
+          <p class="hero__body reveal-up">
+            Teela is a digital product and software company helping ambitious businesses turn ideas into thoughtful,
+            functional digital experiences.
+          </p>
+          <div class="hero__actions reveal-up">
+            <a href="#contact" class="btn btn--primary">Start a project <span class="btn__arrow">↗</span></a>
+            <a href="#work" class="btn btn--ghost">Explore our work <span
+                class="btn__arrow btn__arrow--down">↓</span></a>
           </div>
         </div>
       </div>
@@ -764,9 +744,10 @@
             </div>
           </div>
           <!-- Supporting light floating companions -->
-          <div class="cta-companion cta-companion--orb" data-float-speed="0.8"></div>
-          <div class="cta-companion cta-companion--ring" data-float-speed="1.2"></div>
-          <div class="cta-companion cta-companion--capsule" data-float-speed="0.6"></div>
+          <div class="cta-companion cta-companion--orb" data-float-speed="1.1"></div>
+          <div class="cta-companion cta-companion--ring" data-float-speed="1.25"></div>
+          <div class="cta-companion cta-companion--capsule" data-float-speed="0.95"></div>
+          <div class="cta-companion cta-companion--gem" data-float-speed="1.15"></div>
         </div>
 
         <div class="final-cta__inner reveal-up">

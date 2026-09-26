@@ -12,7 +12,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 130px;
+  padding-top: 120px;
   padding-bottom: var(--space-3xl);
   background-color: var(--color-bg-primary);
   position: relative;
@@ -21,23 +21,25 @@
 
 .hero__container {
   width: 100%;
-}
-
-.hero__layout {
-  display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
-  align-items: center;
-  gap: var(--space-2xl);
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .hero__content {
-  max-width: 860px;
-  z-index: 2;
+  max-width: 800px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
   position: relative;
+  pointer-events: auto;
 }
 
 .hero__eyebrow {
   margin-bottom: var(--space-lg);
+  text-align: left;
 }
 
 .hero__heading {
@@ -46,11 +48,13 @@
   letter-spacing: -0.04em;
   font-weight: 800;
   margin-bottom: var(--space-xl);
+  text-align: left;
 }
 
 .hero__line {
   display: block;
   white-space: nowrap;
+  text-align: left;
 }
 
 .hero__body {
@@ -59,46 +63,41 @@
   color: var(--color-text-secondary);
   max-width: 520px;
   margin-bottom: var(--space-xl);
+  text-align: left;
 }
 
 .hero__actions {
   display: flex;
   gap: var(--space-sm);
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 /* ==========================
-   HERO GEOMETRIC SHAPES STAGE
+   HERO GEOMETRIC SHAPES STAGE (FULL VIEWPORT, BEHIND TEXT)
    ========================== */
 
-.hero__visual--shapes {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: auto;
-}
-
 .hero__shapes-stage {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 620px;
-  height: 580px;
+  height: 100%;
   display: block;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .hero__shapes-aura {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 460px;
-  height: 460px;
+  top: 45%;
+  right: 20%;
+  transform: translate(0, -50%);
+  width: 720px;
+  height: 720px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 201, 76, 0.14) 0%, rgba(138, 92, 246, 0.09) 38%, rgba(236, 72, 153, 0.05) 65%, transparent 75%);
-  filter: blur(52px);
+  background: radial-gradient(circle, rgba(242, 201, 76, 0.12) 0%, rgba(138, 92, 246, 0.08) 38%, rgba(236, 72, 153, 0.04) 68%, transparent 75%);
+  filter: blur(64px);
   z-index: 0;
   pointer-events: none;
 }
@@ -112,6 +111,8 @@
   will-change: transform;
   transform-origin: center center;
   cursor: grab;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .hero-shape:active {
@@ -126,104 +127,56 @@
   pointer-events: none;
   object-fit: contain;
   filter:
-    drop-shadow(2px 5px 6px rgba(12, 12, 12, 0.14)) drop-shadow(6px 14px 18px rgba(12, 12, 12, 0.11)) drop-shadow(14px 28px 34px rgba(12, 12, 12, 0.07));
-  transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    drop-shadow(0 3px 6px rgba(12, 12, 16, 0.08)) drop-shadow(6px 16px 26px rgba(12, 12, 16, 0.12)) drop-shadow(14px 30px 42px rgba(12, 12, 16, 0.08));
+  transition: filter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-shape:hover .hero-shape__img {
   filter:
-    drop-shadow(3px 7px 9px rgba(12, 12, 12, 0.18)) drop-shadow(9px 20px 26px rgba(12, 12, 12, 0.14)) drop-shadow(18px 36px 44px rgba(12, 12, 12, 0.09));
+    drop-shadow(0 5px 10px rgba(12, 12, 16, 0.10)) drop-shadow(8px 24px 36px rgba(12, 12, 16, 0.16)) drop-shadow(20px 42px 56px rgba(12, 12, 16, 0.12));
 }
 
-/* Realistic elliptical contact / ground projection shadow */
-.hero-shape__shadow {
-  position: absolute;
-  bottom: -16px;
-  left: 12%;
-  width: 76%;
-  height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(12, 12, 12, 0.30) 0%, rgba(12, 12, 12, 0.10) 45%, transparent 72%);
-  filter: blur(6px);
-  pointer-events: none;
-  z-index: -1;
-  transform-origin: center center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* Individual shape art-directed coordinates, sizing & visual depth hierarchy */
-
-/* 01 Pink Sphere (Dominant foreground center) */
+/* Individual shape prominent proportional sizing */
 .hero-shape--01 {
-  width: 165px;
-  top: 25%;
-  left: 45%;
-  z-index: 5;
+  width: 195px;
 }
 
-/* 02 Cyan Cube (Dominant architectural anchor mid-left) */
+/* Green Sphere */
 .hero-shape--02 {
-  width: 155px;
-  top: 42%;
-  left: 17%;
-  z-index: 4;
+  width: 150px;
 }
 
-/* 03 Yellow Cone (Dynamic accent top-right) */
+/* Blue Column */
 .hero-shape--03 {
-  width: 125px;
-  top: 5%;
-  left: 67%;
-  z-index: 3;
+  width: 145px;
 }
 
-/* 04 Blue Cylinder (Midground foundation bottom-center) */
+/* Purple Column */
 .hero-shape--04 {
-  width: 140px;
-  top: 54%;
-  left: 50%;
-  z-index: 4;
+  width: 210px;
 }
 
-/* 05 Red Pyramid (Angular midground counterpoint bottom-left) */
+/* Purple Torus Ring */
 .hero-shape--05 {
-  width: 115px;
-  top: 66%;
-  left: 8%;
-  z-index: 3;
+  width: 215px;
 }
 
-/* 06 Lime Cube (Supporting right-side elevation) */
+/* Blue Spiral Coil */
 .hero-shape--06 {
-  width: 120px;
-  top: 38%;
-  left: 77%;
-  z-index: 4;
+  width: 195px;
 }
 
-/* 07 Magenta Prism (Dominant vertical soaring element top-center) */
+/* Purple Star */
 .hero-shape--07 {
-  width: 140px;
-  top: 4%;
-  left: 28%;
-  z-index: 6;
+  width: 220px;
 }
 
-/* 08 Orange Cylinder (Peripheral left anchor) */
+/* Cyan Metaball */
 .hero-shape--08 {
-  width: 110px;
-  top: 20%;
-  left: 2%;
-  z-index: 2;
+  width: 200px;
 }
 
-/* 09 Purple Cube (Deep ambient background anchor bottom-right) */
-.hero-shape--09 {
-  width: 105px;
-  top: 72%;
-  left: 69%;
-  z-index: 2;
-}
+/* Red Droplet Cluster */
 
 
 /* ==========================
@@ -949,14 +902,13 @@
 
 .cta-focal-element {
   position: absolute;
-  width: 220px;
-  height: 220px;
+  width: 370px;
+  height: 370px;
   top: 50%;
   left: 50%;
-  margin-left: -110px;
-  margin-top: -110px;
+  margin-left: -185px;
+  margin-top: -185px;
   will-change: transform;
-  animation: cta-focal-bouncy-float 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 .cta-focal-element__sphere {
@@ -964,14 +916,14 @@
   height: 100%;
   position: relative;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.22) 0%, rgba(242, 201, 76, 0.16) 42%, rgba(255, 255, 255, 0.03) 75%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.26) 0%, rgba(242, 201, 76, 0.2) 42%, rgba(255, 255, 255, 0.04) 75%);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.45),
-    0 0 50px rgba(242, 201, 76, 0.12),
-    inset 0 2px 5px rgba(255, 255, 255, 0.4);
+    0 32px 80px rgba(0, 0, 0, 0.52),
+    0 0 70px rgba(242, 201, 76, 0.2),
+    inset 0 2px 8px rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -981,39 +933,39 @@
   position: absolute;
   top: 14%;
   left: 20%;
-  width: 54px;
-  height: 26px;
+  width: 88px;
+  height: 40px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 80%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, transparent 80%);
   transform: rotate(-25deg);
 }
 
 .cta-focal-element__ring {
   position: absolute;
-  width: 136%;
+  width: 138%;
   height: 60%;
   border-radius: 50%;
-  border: 1.5px solid rgba(242, 201, 76, 0.48);
+  border: 2.5px solid rgba(242, 201, 76, 0.6);
   top: 20%;
-  left: -18%;
+  left: -19%;
   transform: rotate(-24deg);
-  box-shadow: 0 0 20px rgba(242, 201, 76, 0.18);
-  animation: cta-ring-pulse 5s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px rgba(242, 201, 76, 0.3);
+  animation: cta-ring-pulse 3s ease-in-out infinite alternate;
 }
 
 .cta-focal-element__pill {
   position: absolute;
   bottom: 14%;
   right: 16%;
-  width: 34px;
-  height: 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  width: 58px;
+  height: 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.2px solid rgba(255, 255, 255, 0.45);
   transform: rotate(18deg);
 }
 
-/* Secondary light floating companions */
+/* Secondary light floating companions — slightly bigger & kinetic */
 .cta-companion {
   position: absolute;
   border-radius: 50%;
@@ -1022,36 +974,48 @@
 }
 
 .cta-companion--orb {
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(242, 201, 76, 0.08) 60%, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  top: 14%;
-  left: 8%;
-  animation: cta-float-alt 9s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.24), rgba(242, 201, 76, 0.15) 60%, transparent);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  top: 10%;
+  left: 5%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32), 0 0 35px rgba(242, 201, 76, 0.15);
 }
 
 .cta-companion--ring {
-  width: 68px;
-  height: 68px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 1.5px solid rgba(242, 201, 76, 0.32);
-  top: 22%;
-  right: 10%;
-  animation: cta-float-alt 8s ease-in-out infinite alternate-reverse;
+  border: 2.5px solid rgba(242, 201, 76, 0.45);
+  top: 18%;
+  right: 7%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28), 0 0 25px rgba(242, 201, 76, 0.2);
 }
 
 .cta-companion--capsule {
-  width: 50px;
-  height: 24px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  bottom: 18%;
-  left: 14%;
+  width: 110px;
+  height: 50px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+  bottom: 14%;
+  left: 10%;
   transform: rotate(-15deg);
-  animation: cta-float-alt 10s ease-in-out infinite alternate;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+}
+
+.cta-companion--gem {
+  width: 125px;
+  height: 125px;
+  border-radius: 28%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.22), rgba(120, 119, 198, 0.18) 55%, transparent);
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  bottom: 16%;
+  right: 10%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(120, 119, 198, 0.2);
+  transform: rotate(22deg);
 }
 
 @keyframes cta-focal-bouncy-float {

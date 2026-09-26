@@ -1,8 +1,9 @@
 /* ============================================================
-   CTA SHAPES
-   Smooth spring-damped cursor interaction & kinetic motion
-   for the visual focal point in the Let's Talk section.
-   Delivers the soft, playful, alive Framer Motion feel.
+   CTA SHAPES — KINETIC MOTION & SPRING DYNAMICS
+   - Shapes in the Let's Talk section move at the pace of the hero shapes (~35-50 px/s).
+   - High-performance requestAnimationFrame subpixel rendering.
+   - Multi-harmonic continuous buoyant drift + dynamic cursor spring reaction.
+   - Pauses when outside viewport for optimal performance.
    ============================================================ */
 
 export function initCtaShapes() {
@@ -13,22 +14,25 @@ export function initCtaShapes() {
   if (!section) return;
 
   const focalElement = section.querySelector('.cta-focal-element');
-  const companions = section.querySelectorAll('.cta-companion');
-
-  if (!focalElement && !companions.length) return;
+  const orb = section.querySelector('.cta-companion--orb');
+  const ring = section.querySelector('.cta-companion--ring');
+  const capsule = section.querySelector('.cta-companion--capsule');
+  const gem = section.querySelector('.cta-companion--gem');
 
   let isInView = false;
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
+  let targetCursorX = 0;
+  let targetCursorY = 0;
+  let curCursorX = 0;
+  let curCursorY = 0;
   let rafId = null;
+  let startTime = null;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         isInView = entry.isIntersecting;
         if (isInView && !rafId) {
+          startTime = performance.now();
           rafId = requestAnimationFrame(animateLoop);
         } else if (!isInView && rafId) {
           cancelAnimationFrame(rafId);
@@ -36,47 +40,94 @@ export function initCtaShapes() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.1 }
   );
 
   observer.observe(section);
 
-  function animateLoop() {
+  function animateLoop(now) {
     if (!isInView) {
       rafId = null;
       return;
     }
 
-    // Spring interpolation (lerp)
-    const factor = 0.08;
-    currentX += (targetX - currentX) * factor;
-    currentY += (targetY - currentY) * factor;
+    if (!startTime) startTime = now;
+    const t = (now - startTime) / 1000;
 
-    // Apply soft cursor displacement and gentle tilt to focal centerpiece
+    // Fast spring interpolation for cursor tracking
+    curCursorX += (targetCursorX - curCursorX) * 0.12;
+    curCursorY += (targetCursorY - curCursorY) * 0.12;
+
+    // ----------------------------------------------------------------
+    // 1. Focal Centerpiece Motion (~40-50 px/s kinetic buoyant tempo)
+    // ----------------------------------------------------------------
     if (focalElement) {
-      const moveX = currentX * 22;
-      const moveY = currentY * 16;
-      const tilt = currentX * 6;
-      focalElement.style.setProperty('--cursor-x', `${moveX.toFixed(2)}px`);
-      focalElement.style.setProperty('--cursor-y', `${moveY.toFixed(2)}px`);
-      focalElement.style.setProperty('--cursor-tilt', `${tilt.toFixed(2)}deg`);
-      focalElement.style.transform = `translate(var(--cursor-x, 0), var(--cursor-y, 0)) rotate(var(--cursor-tilt, 0deg))`;
+      const floatX = Math.sin(t * 1.55) * 32 + Math.cos(t * 0.85) * 16;
+      const floatY = Math.cos(t * 1.35) * 28 + Math.sin(t * 2.1) * 12;
+      const rot = Math.sin(t * 1.15) * 5.5;
+
+      const totalX = floatX + curCursorX * 38;
+      const totalY = floatY + curCursorY * 28;
+      const totalRot = rot + curCursorX * 7;
+
+      focalElement.style.transform = `translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, 0) rotate(${totalRot.toFixed(2)}deg)`;
     }
 
-    // Apply displacement to companions
-    companions.forEach((comp) => {
-      const speed = parseFloat(comp.dataset.floatSpeed) || 1;
-      const compX = currentX * 12 * speed;
-      const compY = currentY * 10 * speed;
-      comp.style.setProperty('--cursor-x', `${compX.toFixed(2)}px`);
-      comp.style.setProperty('--cursor-y', `${compY.toFixed(2)}px`);
-      comp.style.transform = `translate(var(--cursor-x, 0), var(--cursor-y, 0))`;
-    });
+    // ----------------------------------------------------------------
+    // 2. Orb Companion Motion (~48 px/s pace)
+    // ----------------------------------------------------------------
+    if (orb) {
+      const floatX = Math.cos(t * 1.7 + 0.4) * 44 + Math.sin(t * 0.8) * 18;
+      const floatY = Math.sin(t * 1.5 + 0.8) * 38 + Math.cos(t * 1.1) * 14;
+      const totalX = floatX + curCursorX * 24;
+      const totalY = floatY + curCursorY * 18;
+
+      orb.style.transform = `translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, 0)`;
+    }
+
+    // ----------------------------------------------------------------
+    // 3. Ring Companion Motion (~52 px/s pace)
+    // ----------------------------------------------------------------
+    if (ring) {
+      const floatX = Math.sin(t * 1.85 + 1.2) * 46 + Math.cos(t * 0.75) * 16;
+      const floatY = Math.cos(t * 1.6 + 1.6) * 40 + Math.sin(t * 1.25) * 15;
+      const rot = -t * 14;
+      const totalX = floatX + curCursorX * 28;
+      const totalY = floatY + curCursorY * 20;
+
+      ring.style.transform = `translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`;
+    }
+
+    // ----------------------------------------------------------------
+    // 4. Capsule Companion Motion (~44 px/s pace)
+    // ----------------------------------------------------------------
+    if (capsule) {
+      const floatX = Math.cos(t * 1.5 + 2.1) * 40 + Math.sin(t * 0.9) * 16;
+      const floatY = Math.sin(t * 1.75 + 2.4) * 36 + Math.cos(t * 1.05) * 12;
+      const rot = -15 + Math.sin(t * 1.55) * 14;
+      const totalX = floatX + curCursorX * 22;
+      const totalY = floatY + curCursorY * 16;
+
+      capsule.style.transform = `translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`;
+    }
+
+    // ----------------------------------------------------------------
+    // 5. Gem Companion Motion (~46 px/s pace)
+    // ----------------------------------------------------------------
+    if (gem) {
+      const floatX = Math.sin(t * 1.65 + 3.0) * 42 + Math.cos(t * 0.8) * 16;
+      const floatY = Math.cos(t * 1.7 + 3.2) * 38 + Math.sin(t * 1.3) * 14;
+      const rot = 22 + Math.sin(t * 1.4) * 16;
+      const totalX = floatX + curCursorX * 26;
+      const totalY = floatY + curCursorY * 18;
+
+      gem.style.transform = `translate3d(${totalX.toFixed(2)}px, ${totalY.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`;
+    }
 
     rafId = requestAnimationFrame(animateLoop);
   }
 
-  // Update target coordinates on mouse move
+  // Pointer interactions across the section
   window.addEventListener('mousemove', (e) => {
     if (!isInView) return;
 
@@ -84,13 +135,12 @@ export function initCtaShapes() {
     const centerX = sectionRect.left + sectionRect.width / 2;
     const centerY = sectionRect.top + sectionRect.height / 2;
 
-    targetX = Math.max(-1, Math.min(1, (e.clientX - centerX) / (sectionRect.width / 2)));
-    targetY = Math.max(-1, Math.min(1, (e.clientY - centerY) / (sectionRect.height / 2)));
+    targetCursorX = Math.max(-1, Math.min(1, (e.clientX - centerX) / (sectionRect.width / 2)));
+    targetCursorY = Math.max(-1, Math.min(1, (e.clientY - centerY) / (sectionRect.height / 2)));
   }, { passive: true });
 
-  // Reset target on mouse leave
   section.addEventListener('mouseleave', () => {
-    targetX = 0;
-    targetY = 0;
+    targetCursorX = 0;
+    targetCursorY = 0;
   });
 }
