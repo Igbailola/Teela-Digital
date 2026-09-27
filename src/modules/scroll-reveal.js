@@ -3,11 +3,10 @@
    IntersectionObserver-based reveal on scroll with staggering
    ============================================================ */
 
-export function initScrollReveal() {
-  // Respect prefers-reduced-motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+import { prefersReducedMotion } from './motion.js';
 
-  if (prefersReducedMotion) {
+export function initScrollReveal() {
+  if (prefersReducedMotion()) {
     // Show everything immediately
     document.querySelectorAll('.reveal-up').forEach(el => {
       el.classList.add('is-visible');

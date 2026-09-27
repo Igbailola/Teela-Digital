@@ -11,12 +11,22 @@
 
   --color-text-primary:   #111111;
   --color-text-inverse:   #FFFFFF;
-  --color-text-secondary: #8A8A84;
+
+  /* Muted text. Split by surface: one value cannot clear 4.5:1 against
+     both the light page and the dark footer, so each surface gets its own. */
+  --color-text-muted:     #6E6E68;   /* on --color-bg-primary — 4.78:1 */
+  --color-text-secondary: #8A8A84;   /* on dark surfaces — 5.44:1 */
 
   --color-border:       #D9D9D4;
   --color-border-dark:  #2A2A2A;
+  --color-border-strong: #8A8A85;    /* interactive control edges — 3.23:1 */
 
   --color-accent:       #F2C94C;
+  --color-accent-dark:  #8A6D00;     /* accent text on light — 4.58:1 */
+
+  /* Focus rings. Also split by surface for the same reason. */
+  --color-focus:         #111111;   /* on light — 17.59:1 */
+  --color-focus-inverse: #FFFFFF;   /* on dark — 18.88:1 */
 
   /* ---- Typography ---- */
   --font-primary:   "Manrope", sans-serif;

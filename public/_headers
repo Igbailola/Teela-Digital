@@ -1,0 +1,30 @@
+# ============================================================
+# TEELA DIGITAL — HTTP security headers
+# ============================================================
+# Read by Netlify and Cloudflare Pages. On Vercel the equivalent
+# rules live in vercel.json — keep the two in step.
+#
+# X-Frame-Options is deliberately absent: it is deprecated, and
+# CSP's frame-ancestors already blocks framing.
+# ============================================================
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  X-DNS-Prefetch-Control: off
+  Cross-Origin-Resource-Policy: same-origin
+  # No 'unsafe-inline' in script-src: the only inline script is the
+  # JSON-LD data block, which CSP does not treat as executable.
+  # No 'unsafe-inline' in style-src either: the scripts only mutate
+  # CSSOM properties, which CSP does not govern.
+  # connect-src allows the Formspree fallback. Add your own origin
+  # here if VITE_API_BASE points at a different domain.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+
+# The API functions take same-origin JSON POSTs and are never
+# embedded, framed or cached.
+/api/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store

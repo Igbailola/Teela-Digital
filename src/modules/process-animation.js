@@ -3,15 +3,16 @@
    Scroll-linked progressive reveal for the process section
    ============================================================ */
 
+import { prefersReducedMotion } from './motion.js';
+
 export function initProcessAnimation() {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const section = document.getElementById('process');
   const steps = document.querySelectorAll('[data-process-step]');
   const progressFill = document.getElementById('process-progress-fill');
 
   if (!section || !steps.length) return;
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion()) {
     // Show all steps immediately
     steps.forEach(step => {
       step.classList.add('is-active');

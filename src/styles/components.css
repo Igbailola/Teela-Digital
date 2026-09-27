@@ -5,6 +5,29 @@
 
 
 /* ==========================
+   ICONS
+   ========================== */
+
+/* Vector arrows, sized in em so they track the surrounding text.
+   Stroke and fill are set here so they cascade into the <use>
+   shadow tree and inherit the element's colour. Direction is
+   carried by the referenced <symbol>, not by a modifier class. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+
+/* ==========================
    BUTTONS
    ========================== */
 
@@ -37,7 +60,7 @@
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -46,9 +69,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-style: normal;
+  font-size: 1.15em;
   line-height: 1;
-  vertical-align: middle;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
@@ -86,7 +108,7 @@
 .btn--ghost {
   background-color: transparent;
   color: var(--color-text-primary);
-  border-color: var(--color-border);
+  border-color: var(--color-border-strong);
 }
 
 .btn--ghost:hover {
@@ -194,7 +216,7 @@
 }
 
 .nav__toggle:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -239,7 +261,7 @@
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   transition: color var(--duration-fast);
   position: relative;
 }
@@ -298,7 +320,7 @@
   font-size: var(--text-md);
   font-family: var(--font-primary);
   background-color: var(--color-bg-primary);
-  border: 1.5px solid var(--color-border);
+  border: 1.5px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   transition: border-color var(--duration-fast),
               box-shadow var(--duration-fast);
@@ -357,6 +379,10 @@
 
 .form-status--error {
   color: #C94632;
+}
+
+.form-status--pending {
+  color: var(--color-text-muted);
 }
 
 /* Validation */
