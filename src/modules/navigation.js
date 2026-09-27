@@ -40,12 +40,16 @@ export function initNavigation() {
   function openMenu() {
     toggle.setAttribute('aria-expanded', 'true');
     menu.classList.add('is-open');
+    // The header's backdrop-filter would become the containing block for the
+    // fixed overlay, collapsing it to the header box — neutralise it while open.
+    header.classList.add('is-menu-open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     toggle.setAttribute('aria-expanded', 'false');
     menu.classList.remove('is-open');
+    header.classList.remove('is-menu-open');
     document.body.style.overflow = '';
   }
 

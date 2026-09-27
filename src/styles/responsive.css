@@ -1,6 +1,11 @@
 /* ============================================================
    RESPONSIVE
    Breakpoint overrides — mobile-aware, not just compressed desktop
+
+   Breakpoint system:
+   Desktop:  1101px+     — existing base styles
+   Tablet:   769px–1100px — deliberate middle breakpoint
+   Mobile:   ≤ 768px     — compact, intentional, interactive
    ============================================================ */
 
 
@@ -30,68 +35,13 @@
 
 
 /* ==========================
-   ≤ 1024px — Tablet
+   ≤ 1100px — TABLET
+   Controlled, editorial and balanced.
    ========================== */
 
-@media (max-width: 1024px) {
-  .hero {
-    min-height: auto;
-    padding-top: 130px;
-    padding-bottom: var(--space-2xl);
-  }
+@media (max-width: 1100px) {
 
-  .hero__layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
-
-  .hero__visual--shapes {
-    margin-top: var(--space-xl);
-    justify-content: center;
-  }
-
-  .hero__shapes-stage {
-    max-width: 480px;
-    height: 460px;
-  }
-
-  .hero__shapes-aura {
-    width: 340px;
-    height: 340px;
-  }
-
-  .about__body {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
-
-  .about__facts {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .contact__layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-
-  .contact__heading {
-    position: static;
-  }
-
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
-  }
-}
-
-
-/* ==========================
-   ≤ 768px — Mobile landscape / small tablet
-   ========================== */
-
-@media (max-width: 768px) {
-
-  /* Navigation → mobile */
+  /* ---- Navigation → hamburger on tablet ---- */
   .nav__toggle {
     display: flex;
   }
@@ -99,11 +49,14 @@
   .nav__menu {
     position: fixed;
     inset: 0;
+    /* Fully opaque panel so page copy can never show through the overlay */
     background-color: var(--color-bg-primary);
+    overscroll-behavior: contain;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: var(--z-nav);
+    /* Nav overlay must sit ABOVE everything on the page */
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition:
@@ -114,6 +67,17 @@
   .nav__menu.is-open {
     opacity: 1;
     visibility: visible;
+  }
+
+  /* While the overlay is open, drop the header's blur/background.
+     backdrop-filter creates a containing block for fixed descendants, which
+     would shrink the overlay to the header box and let the links overlap the
+     page text. Only the logo and toggle need to stay visible above it. */
+  .site-header.is-menu-open {
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .nav__menu-inner {
@@ -141,7 +105,257 @@
     font-size: var(--text-sm);
   }
 
-  /* ---- Hero Mobile Typography (Requirement #1) ---- */
+  /* ---- Nav toggle z-index — above the overlay ---- */
+  .nav__toggle {
+    z-index: 10000;
+    position: relative;
+  }
+
+  .nav__logo {
+    z-index: 10000;
+    position: relative;
+  }
+
+  /* Remove browser default blue focus outline on toggle */
+  .nav__toggle:focus {
+    outline: none;
+  }
+
+  .nav__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ---- Tablet Hero (Requirement #1–#6) ---- */
+  .hero {
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .hero__content {
+    max-width: 1000px;
+    padding-inline: 32px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__heading {
+    /* Controlled: ~64px at 769px → ~78px at 1100px */
+    font-size: clamp(4rem, 6.5vw + 0.25rem, 4.85rem);
+    line-height: 0.95;
+    letter-spacing: -0.042em;
+    margin-bottom: var(--space-lg);
+    max-width: 100%;
+    text-wrap: balance;
+  }
+
+  .hero__body {
+    font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+    max-width: 860px;
+    margin-inline: auto;
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    max-width: 640px;
+    margin-inline: auto;
+    gap: 12px;
+  }
+
+  /* ---- Tablet Hero Background (Requirement #3) ---- */
+  .hero__shapes-stage {
+    /* Let shapes fill the hero section */
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  .hero__shapes-aura {
+    width: 520px;
+    height: 520px;
+    opacity: 0.85;
+  }
+
+  .hero-focal-element {
+    width: 340px;
+    height: 340px;
+    margin-left: -170px;
+    margin-top: -170px;
+    opacity: 0.8;
+  }
+
+  .hero-companion {
+    opacity: 0.55;
+  }
+
+  .hero-companion--mid-right,
+  .hero-companion--mid-left {
+    opacity: 0.4;
+  }
+
+  /* ---- Tablet About Section (Requirement #11) ---- */
+  .about__body {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .about__facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .about .section {
+    padding-top: calc(var(--space-section) + 16px);
+  }
+
+  /* ---- Tablet Services (Requirement #12–#13) ---- */
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .service-card {
+    padding: var(--space-xl) var(--space-lg);
+    min-height: 280px;
+  }
+
+  .service-card__title {
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  }
+
+  .service-card__desc {
+    font-size: var(--text-sm);
+    max-width: 95%;
+  }
+
+  /* ---- Tablet Work Section (Requirement #14) ---- */
+  .work-card {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .work-card__title {
+    font-size: var(--text-lg);
+  }
+
+  /* ---- Tablet Process (Requirement #15) ---- */
+  .process__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .process-step:nth-child(4),
+  .process-step:nth-child(5) {
+    border-top: 1px solid var(--color-border-dark);
+  }
+
+  /* ---- Tablet Contact ---- */
+  .contact__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .contact__heading {
+    position: static;
+  }
+
+  /* ---- Tablet Footer (Requirement #16) ---- */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+
+  /* ---- Tablet Section Spacing ---- */
+  .section {
+    padding-top: clamp(80px, 10vw, 140px);
+    padding-bottom: clamp(80px, 10vw, 140px);
+  }
+
+  .section__header {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section__heading {
+    font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem);
+  }
+
+  .section__subheading {
+    font-size: var(--text-lg);
+    max-width: 540px;
+  }
+}
+
+
+/* ==========================
+   769px–820px — Narrow Tablet
+   Restrained sticky services + tighter heading
+   ========================== */
+
+@media (min-width: 769px) and (max-width: 820px) {
+  .hero__heading {
+    font-size: clamp(3.75rem, 7vw, 4.2rem);
+    max-width: 650px;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  /* Restrained sticky card treatment at narrow tablet */
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: visible;
+  }
+
+  .services {
+    overflow: visible;
+  }
+
+  .services .container {
+    overflow: visible;
+  }
+
+  .service-card {
+    position: sticky;
+    min-height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow:
+      0 -4px 16px -2px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.03);
+    margin-bottom: 14px;
+  }
+
+  .service-card:nth-child(1) { z-index: 1; top: 80px; }
+  .service-card:nth-child(2) { z-index: 2; top: 86px; }
+  .service-card:nth-child(3) { z-index: 3; top: 92px; }
+  .service-card:nth-child(4) { z-index: 4; top: 98px; }
+  .service-card:nth-child(5) { z-index: 5; top: 104px; }
+  .service-card:nth-child(6) { z-index: 6; top: 110px; }
+  .service-card:nth-child(7) { z-index: 7; top: 116px; }
+  .service-card:nth-child(8) { z-index: 8; top: 122px; }
+
+  .service-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ==========================
+   ≤ 768px — MOBILE
+   Compact, intentional and interactive.
+   ========================== */
+
+@media (max-width: 768px) {
+
+  /* ---- Hero Mobile Typography ---- */
   .hero {
     min-height: auto;
     padding-top: 110px;
@@ -158,7 +372,7 @@
     line-height: 0.96;
     letter-spacing: -0.04em;
     margin-bottom: var(--space-lg);
-    max-width: 520px;
+    max-width: 600px;
     text-wrap: balance;
   }
 
@@ -169,7 +383,7 @@
   .hero__body {
     font-size: clamp(1rem, 1.2vw + 0.75rem, 1.2rem);
     margin-bottom: var(--space-lg);
-    max-width: 460px;
+    max-width: 560px;
     line-height: 1.6;
   }
 
@@ -177,10 +391,11 @@
     gap: 0.75rem;
   }
 
-  /* Hero shapes on mobile */
+  /* Hero shapes fill section on mobile too */
   .hero__shapes-stage {
-    max-width: 380px;
-    height: 360px;
+    width: 100%;
+    height: 100%;
+    max-width: none;
   }
 
   .hero__shapes-aura {
@@ -212,7 +427,7 @@
     display: none;
   }
 
-  /* ---- CTA Arrow Refinement (Requirement #3) ---- */
+  /* ---- CTA Arrow Refinement ---- */
   .btn__arrow {
     display: inline-flex;
     align-items: center;
@@ -246,11 +461,10 @@
     transform: translateY(3px) scale(0.95);
   }
 
-  /* ---- Services: Sticky Stacking Cards (Requirement #4) ---- */
+  /* ---- Services: Sticky Stacking Cards ---- */
   .services__grid {
     grid-template-columns: 1fr;
     gap: 0;
-    /* Remove any overflow that could break position: sticky */
     overflow: visible;
   }
 
@@ -267,7 +481,6 @@
     padding: var(--space-xl) var(--space-lg);
     min-height: auto;
     border-radius: var(--radius-lg);
-    /* subtle shadow for stacking depth */
     box-shadow:
       0 -4px 16px -2px rgba(0, 0, 0, 0.06),
       0 2px 8px rgba(0, 0, 0, 0.03);
@@ -284,17 +497,15 @@
   .service-card:nth-child(7) { z-index: 7; top: 112px; }
   .service-card:nth-child(8) { z-index: 8; top: 118px; }
 
-  /* Ensure last card can fully scroll into view */
   .service-card:last-child {
     margin-bottom: 0;
   }
 
-  /* Disable hover lift on mobile sticky cards — conflicts with sticky */
   .service-card:hover {
     transform: none;
   }
 
-  /* ---- Service Card Hierarchy (Requirement #5) ---- */
+  /* ---- Service Card Hierarchy ---- */
   .service-card__header {
     margin-bottom: var(--space-md);
   }
@@ -420,7 +631,7 @@
     height: 80px;
   }
 
-  /* ---- Mobile Spacing (Requirement #6) ---- */
+  /* ---- Mobile Spacing ---- */
   .section {
     padding-top: clamp(64px, 10vw, 96px);
     padding-bottom: clamp(64px, 10vw, 96px);
@@ -519,8 +730,7 @@
   }
 
   .hero__shapes-stage {
-    max-width: 310px;
-    height: 290px;
+    max-width: none;
   }
 
   /* Sticky card offsets adjusted for smaller viewport */

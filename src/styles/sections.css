@@ -29,7 +29,7 @@
 }
 
 .hero__content {
-  max-width: 900px;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -64,7 +64,7 @@
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1.65;
   color: var(--color-text-secondary);
-  max-width: 860px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: var(--space-xl);
@@ -1148,8 +1148,15 @@
   grid-column: 1 / -1;
 }
 
+/* Submit action sits 26px below the last field, on every breakpoint:
+   the grid supplies 16px (--space-sm row-gap) and the field's trailing
+   margin supplies the remaining 10px. Identical at all screen sizes. */
+.form-group--full:not(.form-group--submit) {
+  margin-bottom: 10px;
+}
+
 .form-group--submit {
-  margin-top: var(--space-xs);
+  margin-top: 0;
 }
 
 

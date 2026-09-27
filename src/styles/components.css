@@ -166,7 +166,8 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-primary);
-  z-index: calc(var(--z-nav) + 1);
+  z-index: 10000;
+  position: relative;
   transition: color var(--duration-fast);
 }
 
@@ -179,8 +180,23 @@
   width: 40px;
   height: 40px;
   gap: 6px;
-  z-index: calc(var(--z-nav) + 1);
+  z-index: 10000;
+  position: relative;
   padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Remove browser default blue focus outline */
+.nav__toggle:focus {
+  outline: none;
+}
+
+.nav__toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 .nav__toggle-line {
