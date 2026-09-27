@@ -141,6 +141,42 @@
     font-size: var(--text-sm);
   }
 
+  /* ---- Hero Mobile Typography (Requirement #1) ---- */
+  .hero {
+    min-height: auto;
+    padding-top: 110px;
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__heading {
+    /* Responsive: ~44px at 320px → ~54px at 768px */
+    font-size: clamp(2.65rem, 4.5vw + 1.5rem, 3.35rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-lg);
+    max-width: 520px;
+    text-wrap: balance;
+  }
+
+  .hero__line {
+    white-space: normal;
+  }
+
+  .hero__body {
+    font-size: clamp(1rem, 1.2vw + 0.75rem, 1.2rem);
+    margin-bottom: var(--space-lg);
+    max-width: 460px;
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    gap: 0.75rem;
+  }
+
   /* Hero shapes on mobile */
   .hero__shapes-stage {
     max-width: 380px;
@@ -158,9 +194,150 @@
     display: none;
   }
 
-  /* Services grid */
+  /* Reduce hero focal element on mobile */
+  .hero-focal-element {
+    width: 280px;
+    height: 280px;
+    margin-left: -140px;
+    margin-top: -140px;
+    opacity: 0.7;
+  }
+
+  .hero-companion {
+    opacity: 0.5;
+  }
+
+  .hero-companion--mid-right,
+  .hero-companion--mid-left {
+    display: none;
+  }
+
+  /* ---- CTA Arrow Refinement (Requirement #3) ---- */
+  .btn__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    line-height: 1;
+    vertical-align: middle;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .btn__arrow--down {
+    font-size: 1.15em;
+  }
+
+  /* Hover: arrows translate horizontally or vertically */
+  .btn:hover .btn__arrow {
+    transform: translateX(5px);
+  }
+
+  .btn:hover .btn__arrow--down {
+    transform: translateX(0) translateY(4px);
+  }
+
+  /* Active/tap: subtle scale + translate */
+  .btn:active .btn__arrow {
+    transform: translateX(3px) scale(0.95);
+  }
+
+  .btn:active .btn__arrow--down {
+    transform: translateY(3px) scale(0.95);
+  }
+
+  /* ---- Services: Sticky Stacking Cards (Requirement #4) ---- */
   .services__grid {
     grid-template-columns: 1fr;
+    gap: 0;
+    /* Remove any overflow that could break position: sticky */
+    overflow: visible;
+  }
+
+  .services {
+    overflow: visible;
+  }
+
+  .services .container {
+    overflow: visible;
+  }
+
+  .service-card {
+    position: sticky;
+    padding: var(--space-xl) var(--space-lg);
+    min-height: auto;
+    border-radius: var(--radius-lg);
+    /* subtle shadow for stacking depth */
+    box-shadow:
+      0 -4px 16px -2px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.03);
+    margin-bottom: 12px;
+  }
+
+  /* Incremental z-index for stacking effect */
+  .service-card:nth-child(1) { z-index: 1; top: 76px; }
+  .service-card:nth-child(2) { z-index: 2; top: 82px; }
+  .service-card:nth-child(3) { z-index: 3; top: 88px; }
+  .service-card:nth-child(4) { z-index: 4; top: 94px; }
+  .service-card:nth-child(5) { z-index: 5; top: 100px; }
+  .service-card:nth-child(6) { z-index: 6; top: 106px; }
+  .service-card:nth-child(7) { z-index: 7; top: 112px; }
+  .service-card:nth-child(8) { z-index: 8; top: 118px; }
+
+  /* Ensure last card can fully scroll into view */
+  .service-card:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Disable hover lift on mobile sticky cards — conflicts with sticky */
+  .service-card:hover {
+    transform: none;
+  }
+
+  /* ---- Service Card Hierarchy (Requirement #5) ---- */
+  .service-card__header {
+    margin-bottom: var(--space-md);
+  }
+
+  .service-card__number {
+    font-size: 0.7rem;
+  }
+
+  .service-card__category {
+    font-size: 0.62rem;
+  }
+
+  .service-card__title {
+    font-size: clamp(1.15rem, 2vw + 0.5rem, 1.4rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+  }
+
+  .service-card__desc {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+    max-width: 90%;
+  }
+
+  .service-card__tags {
+    padding-top: var(--space-sm);
+    gap: 5px;
+  }
+
+  .service-card__tag {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  .service-card__motif {
+    width: 48px;
+    height: 48px;
+  }
+
+  .service-card__motif svg {
+    width: 30px;
+    height: 30px;
   }
 
   /* Simplify glass effects on mobile for performance */
@@ -243,10 +420,54 @@
     height: 80px;
   }
 
+  /* ---- Mobile Spacing (Requirement #6) ---- */
+  .section {
+    padding-top: clamp(64px, 10vw, 96px);
+    padding-bottom: clamp(64px, 10vw, 96px);
+  }
+
+  .section__header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section__subheading {
+    font-size: var(--text-md);
+    line-height: 1.55;
+  }
+
+  /* Brand statement spacing */
+  .brand-statement__inner {
+    max-width: 100%;
+  }
+
+  /* Process section spacing */
+  .process-step__number {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Works section spacing */
+  .works__grid {
+    gap: var(--space-xl);
+  }
+
+  .work-card {
+    padding-bottom: var(--space-xl);
+  }
+
+  .work-card__title {
+    font-size: var(--text-lg);
+  }
+
   /* Footer */
+  .footer {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+  }
+
   .footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+    padding-bottom: var(--space-2xl);
   }
 
   .footer__bottom {
@@ -267,23 +488,57 @@
    ========================== */
 
 @media (max-width: 480px) {
+  .hero {
+    padding-top: 100px;
+    padding-bottom: var(--space-lg);
+  }
+
   .hero__heading {
-    font-size: clamp(1.8rem, 7vw, 2.35rem);
-    line-height: 1.02;
+    font-size: clamp(2.5rem, 10vw + 0.5rem, 3rem);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    max-width: 400px;
+  }
+
+  .hero__body {
+    font-size: 0.95rem;
+    max-width: 340px;
+    margin-bottom: var(--space-md);
   }
 
   .hero__actions {
     flex-direction: column;
+    width: 100%;
+    max-width: 320px;
   }
 
   .hero__actions .btn {
     width: 100%;
     text-align: center;
+    justify-content: center;
   }
 
   .hero__shapes-stage {
     max-width: 310px;
     height: 290px;
+  }
+
+  /* Sticky card offsets adjusted for smaller viewport */
+  .service-card:nth-child(1) { top: 70px; }
+  .service-card:nth-child(2) { top: 76px; }
+  .service-card:nth-child(3) { top: 82px; }
+  .service-card:nth-child(4) { top: 88px; }
+  .service-card:nth-child(5) { top: 94px; }
+  .service-card:nth-child(6) { top: 100px; }
+  .service-card:nth-child(7) { top: 106px; }
+  .service-card:nth-child(8) { top: 112px; }
+
+  .service-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .service-card__desc {
+    max-width: 100%;
   }
 
   .brand-statement__heading {
@@ -312,5 +567,76 @@
 
   .section__heading {
     font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  /* Tighter section spacing on small phones */
+  .section {
+    padding-top: clamp(56px, 8vw, 72px);
+    padding-bottom: clamp(56px, 8vw, 72px);
+  }
+
+  .section__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Contact spacing */
+  .contact__heading {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+
+  /* Footer tighter on small mobile */
+  .footer {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-lg);
+  }
+
+  .footer__grid {
+    gap: var(--space-lg);
+    padding-bottom: var(--space-xl);
+  }
+}
+
+
+/* ==========================
+   ≤ 360px — Very small mobile (SE, Galaxy S range)
+   ========================== */
+
+@media (max-width: 360px) {
+  .hero__heading {
+    font-size: 2.4rem;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 300px;
+  }
+
+  .hero__body {
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .service-card {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .service-card__title {
+    font-size: 1.05rem;
+  }
+
+  .service-card__desc {
+    font-size: 0.8rem;
+  }
+
+  .service-card__tag {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.85em 1.5em;
   }
 }

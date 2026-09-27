@@ -41,19 +41,32 @@
   outline-offset: 3px;
 }
 
-/* Subtle arrow movement */
+/* Arrow icon treatment — intentional, aligned, interactive */
 .btn__arrow {
-  display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: middle;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .btn:hover .btn__arrow {
-  transform: translate(2px, -2px);
+  transform: translateX(5px);
 }
 
 .btn:hover .btn__arrow--down {
-  transform: translateY(2px);
+  transform: translateX(0) translateY(4px);
+}
+
+.btn:active .btn__arrow {
+  transform: translateX(3px) scale(0.96);
+}
+
+.btn:active .btn__arrow--down {
+  transform: translateY(3px) scale(0.96);
 }
 
 /* Primary — dark fill: gentle dissolve to soft charcoal */

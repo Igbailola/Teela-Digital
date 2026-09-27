@@ -56,13 +56,21 @@
 
 
 /* ==========================
-   Page load entrance
+   Page load entrance — Hero
+   Refined editorial sequence (Requirement #2):
+   1. Heading reveals first  (lines stagger)
+   2. Paragraph fades/slides in
+   3. CTAs reveal last
+   4. Background stays subtle and slow
+
+   Motion: slight upward translation + opacity
+   Easing: smooth ease-out, no bouncing/scaling
    ========================== */
 
-@keyframes hero-fade-in {
+@keyframes hero-entrance {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -70,32 +78,37 @@
   }
 }
 
+/* Eyebrow — subtle, appears just before heading */
 .hero__content .hero__eyebrow {
-  animation: hero-fade-in 0.9s var(--ease-out) 0.1s both;
+  animation: hero-entrance 600ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
 }
 
+/* Heading — primary reveal, controlled by .hero__line stagger below */
 .hero__content .hero__heading {
-  animation: hero-fade-in 0.9s var(--ease-out) 0.25s both;
+  animation: hero-entrance 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
 }
 
+/* Paragraph — fades in after heading */
 .hero__content .hero__body {
-  animation: hero-fade-in 0.9s var(--ease-out) 0.45s both;
+  animation: hero-entrance 550ms cubic-bezier(0.16, 1, 0.3, 1) 580ms both;
 }
 
+/* CTAs — reveal last */
 .hero__content .hero__actions {
-  animation: hero-fade-in 0.9s var(--ease-out) 0.6s both;
+  animation: hero-entrance 450ms cubic-bezier(0.16, 1, 0.3, 1) 740ms both;
 }
 
-/* Hero shapes stage entrance */
+
+/* Hero shapes stage entrance — subtle, slow background */
 .hero__shapes-stage {
   opacity: 0;
-  animation: hero-shapes-stage-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation: hero-shapes-stage-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 @keyframes hero-shapes-stage-in {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -106,21 +119,22 @@
 
 /* ==========================
    Hero line stagger — 3 rows reveal
+   Premium editorial: each line slides up with stagger
    ========================== */
 
 .hero__line {
   opacity: 0;
-  animation: hero-line-in 0.8s var(--ease-out) both;
+  animation: hero-line-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.hero__line:nth-child(1) { animation-delay: 0.15s; }
-.hero__line:nth-child(2) { animation-delay: 0.3s; }
-.hero__line:nth-child(3) { animation-delay: 0.45s; }
+.hero__line:nth-child(1) { animation-delay: 200ms; }
+.hero__line:nth-child(2) { animation-delay: 310ms; }
+.hero__line:nth-child(3) { animation-delay: 420ms; }
 
-@keyframes hero-line-in {
+@keyframes hero-line-reveal {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -215,7 +229,8 @@
 
 
 /* ==========================
-   Reduced motion
+   Reduced motion (Requirement #8)
+   Disable/reduce all non-essential animations
    ========================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -245,6 +260,17 @@
 
   .hero__line {
     opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__content .hero__eyebrow,
+  .hero__content .hero__heading,
+  .hero__content .hero__body,
+  .hero__content .hero__actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 
   .hero__shapes-stage,
@@ -265,6 +291,17 @@
   .cta-focal-element__ring {
     animation: none;
     transform: none;
+  }
+
+  .hero-focal-element,
+  .hero-companion,
+  .hero-focal-element__ring {
+    animation: none;
+    transform: none;
+  }
+
+  .btn__arrow {
+    transition: none;
   }
 
   .section__heading .editorial::after {
