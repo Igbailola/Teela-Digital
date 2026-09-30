@@ -1,4 +1,4 @@
-# Teela Digital — Security Guidelines
+# Teela Tech — Security Guidelines
 
 ## 1. Purpose
 

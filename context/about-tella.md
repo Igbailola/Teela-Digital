@@ -1,6 +1,6 @@
 # Teela
 
-**Teela Digital is a software development and digital product company helping businesses turn ideas into well-designed, functional digital experiences.**
+**Teela Tech is a software development and digital product company helping businesses turn ideas into well-designed, functional digital experiences.**
 
 Founded in early 2026, Teela began as a design academy created to mentor aspiring designers and developers in the practical process of designing, building, and engineering digital products. As our community and expertise grew, Teela evolved beyond education into a full-service software and digital product company.
 

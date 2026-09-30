@@ -1,5 +1,5 @@
 /* ============================================================
-   TEELA DIGITAL — Runtime Configuration
+   TEELA TECH — Runtime Configuration
    Single access point for build-time environment variables.
    Values come from VITE_* vars in .env.local, which is never
    committed. See .env.example for the full list.

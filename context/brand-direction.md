@@ -1,16 +1,16 @@
-# TEELA DIGITAL — BRAND DIRECTION
+# TEELA TECH — BRAND DIRECTION
 
 ## 1. Brand Overview
 
 ### Brand Name
 
-**Teela Digital**
+**Teela Tech**
 
 This is the official and final company name.
 
 ### Official Brand Lockup
 
-**TEELA DIGITAL**
+**TEELA TECH**
 
 *Ideas, engineered beautifully.*
 
@@ -22,7 +22,7 @@ The brand lockup establishes the company's name, primary tagline, and category d
 
 **Ideas, engineered beautifully.**
 
-This is Teela Digital's official tagline.
+This is Teela Tech's official tagline.
 
 It communicates the belief that good ideas deserve more than simply being made functional. They should be thoughtfully designed, understood, engineered, and brought to life with precision.
 
@@ -32,7 +32,7 @@ The tagline should remain consistent across major brand touchpoints.
 
 **Digital Product & Software Company**
 
-The descriptor clearly communicates what Teela Digital is without limiting the company to website development.
+The descriptor clearly communicates what Teela Tech is without limiting the company to website development.
 
 It may be used beneath the logo/brand name, in presentations, proposals, social profiles, website metadata, and other contexts where additional clarification is useful.
 
@@ -70,7 +70,7 @@ We bring design, research, and engineering together to create digital products t
 
 # 5. Positioning
 
-Teela Digital is a **premium digital product and software company** combining design, research, and engineering to help ambitious businesses, brands, and startups create meaningful digital products and experiences.
+Teela Tech is a **premium digital product and software company** combining design, research, and engineering to help ambitious businesses, brands, and startups create meaningful digital products and experiences.
 
 Teela should be perceived as:
 
@@ -171,7 +171,7 @@ These three disciplines should remain central to the company's identity.
 
 # 9. Services
 
-Teela Digital currently operates across:
+Teela Tech currently operates across:
 
 1. Product Design
 2. UI/UX Design
@@ -603,7 +603,7 @@ Use:
 
 ### Short Company Description
 
-> Teela Digital is a digital product and software company helping ambitious businesses turn ideas into thoughtful, functional digital experiences.
+> Teela Tech is a digital product and software company helping ambitious businesses turn ideas into thoughtful, functional digital experiences.
 
 ### Geographic Expression
 
@@ -623,7 +623,7 @@ The hierarchy is:
 
 ### Brand Identity
 
-**TEELA DIGITAL**
+**TEELA TECH**
 
 *Ideas, engineered beautifully.*
 
@@ -769,7 +769,7 @@ Interaction should have intention.
 
 # 29. Overall Creative Direction
 
-The Teela Digital brand should feel like:
+The Teela Tech brand should feel like:
 
 **Editorial sophistication + product thinking + engineering precision.**
 
@@ -789,7 +789,7 @@ The goal is to look **thoughtful, capable, modern, and exceptionally well made.*
 
 When there is uncertainty about how Teela should look, sound, or position itself, return to this hierarchy:
 
-**TEELA DIGITAL**
+**TEELA TECH**
 
 *Ideas, engineered beautifully.*
 

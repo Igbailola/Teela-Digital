@@ -37,7 +37,7 @@ function shell(preheader, heading, body, footerNote) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FFFFFF;border:1px solid ${BORDER};border-radius:12px;">
 
 <tr><td style="padding:28px 32px 8px;">
-  <p style="margin:0;font-size:12px;letter-spacing:0.18em;font-weight:700;color:${INK};">TEELA DIGITAL</p>
+  <p style="margin:0;font-size:12px;letter-spacing:0.18em;font-weight:700;color:${INK};">TEELA TECH</p>
 </td></tr>
 
 <tr><td style="padding:8px 32px 0;">
@@ -50,7 +50,7 @@ function shell(preheader, heading, body, footerNote) {
 
 <tr><td style="padding:24px 32px 28px;border-top:1px solid ${BORDER};margin-top:24px;">
   <p style="margin:0;font-size:12px;line-height:1.6;color:${MUTED};">
-    ${footerNote ? escapeHtml(footerNote) : 'Teela Digital — Ideas, engineered beautifully.'}
+    ${footerNote ? escapeHtml(footerNote) : 'Teela Tech — Ideas, engineered beautifully.'}
   </p>
 </td></tr>
 
@@ -92,8 +92,8 @@ export function enquiryAcknowledgement({ name, email, projectType, replyTo }) {
      <p>Thanks for getting in touch about your ${escapeHtml(projectType)} project. Your enquiry has reached us and someone on the team will reply to you at this address within one business day.</p>
      <p>If it is urgent, you can reach us directly at
         <a href="mailto:${escapeHtml(replyTo)}" style="color:${ACCENT};">${escapeHtml(replyTo)}</a>.</p>`
-      + button('Reply to Teela Digital', `mailto:${replyTo}`),
-    'You are receiving this because you submitted an enquiry on the Teela Digital website.'
+      + button('Reply to Teela Tech', `mailto:${replyTo}`),
+    'You are receiving this because you submitted an enquiry on the Teela Tech website.'
   );
 
   const text = [
@@ -105,7 +105,7 @@ export function enquiryAcknowledgement({ name, email, projectType, replyTo }) {
     `Urgent? Email us directly at ${replyTo}`,
   ].join('\n');
 
-  return { subject: 'We have your enquiry — Teela Digital', html, text };
+  return { subject: 'We have your enquiry — Teela Tech', html, text };
 }
 
 /**
@@ -138,8 +138,8 @@ export function enquiryNotification({ name, email, company, projectType, message
     'New website enquiry',
     `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">${rows}</table>
      <p style="margin:0;font-size:15px;line-height:1.7;color:${INK};">${escapeHtml(message).replace(/\n/g, '<br>')}</p>`
-      + button('Reply to ' + name.split(' ')[0], `mailto:${email}?subject=${encodeURIComponent(`Re: your Teela Digital enquiry`)}`),
-    'Sent by the Teela Digital website contact form.'
+      + button('Reply to ' + name.split(' ')[0], `mailto:${email}?subject=${encodeURIComponent(`Re: your Teela Tech enquiry`)}`),
+    'Sent by the Teela Tech website contact form.'
   );
 
   const text = [
@@ -168,7 +168,7 @@ export function enquiryNotification({ name, email, company, projectType, message
  */
 export function optInConfirmation({ confirmUrl, unsubscribeUrl }) {
   const html = shell(
-    'Confirm your subscription to Teela Digital.',
+    'Confirm your subscription to Teela Tech.',
     'Confirm your subscription',
     `<p>One click and you are on the list. We will send occasional dispatches on digital product work — no noise, and you can leave at any time.</p>`
       + button('Confirm subscription', confirmUrl)
@@ -176,7 +176,7 @@ export function optInConfirmation({ confirmUrl, unsubscribeUrl }) {
          <a href="${escapeHtml(confirmUrl)}" style="color:${ACCENT};word-break:break-all;">${escapeHtml(confirmUrl)}</a></p>
          <p style="margin:12px 0 0;font-size:13px;">Not interested?
          <a href="${escapeHtml(unsubscribeUrl)}" style="color:${ACCENT};">Unsubscribe</a>.</p>`,
-    'You are receiving this because someone entered this address on the Teela Digital website.'
+    'You are receiving this because someone entered this address on the Teela Tech website.'
   );
 
   const text = [
@@ -189,7 +189,7 @@ export function optInConfirmation({ confirmUrl, unsubscribeUrl }) {
     unsubscribeUrl,
   ].join('\n');
 
-  return { subject: 'Confirm your subscription — Teela Digital', html, text };
+  return { subject: 'Confirm your subscription — Teela Tech', html, text };
 }
 
 /**
@@ -205,8 +205,8 @@ export function optInSuccess() {
   );
 
   return {
-    subject: 'You are on the list — Teela Digital',
+    subject: 'You are on the list — Teela Tech',
     html,
-    text: 'Thanks for confirming. You are on the Teela Digital list.',
+    text: 'Thanks for confirming. You are on the Teela Tech list.',
   };
 }

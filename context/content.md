@@ -1,4 +1,4 @@
-# Teela Digital — Website Content
+# Teela Tech — Website Content
 
 > This file contains website copy and content structure.
 > Brand strategy, visual rules and design decisions belong in `01-brand-direction.md`.
@@ -9,7 +9,7 @@
 
 Current working name:
 
-**Teela Digital**
+**Teela Tech**
 
 > The final brand extension may change after naming validation.
 
@@ -397,7 +397,7 @@ Placeholder values may be used during development but must be clearly marked as 
 
 ### Brand
 
-> TEELA DIGITAL
+> TEELA TECH
 
 ### Descriptor
 
@@ -424,7 +424,7 @@ Placeholder values may be used during development but must be clearly marked as 
 
 ### Copyright
 
-> © 2026 Teela Digital. All rights reserved.
+> © 2026 Teela Tech. All rights reserved.
 
 ---
 

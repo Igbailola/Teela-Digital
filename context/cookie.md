@@ -1,4 +1,4 @@
-# Teela Digital — Cookie & Tracking Guidelines
+# Teela Tech — Cookie & Tracking Guidelines
 
 ## 1. Purpose
 

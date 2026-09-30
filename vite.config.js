@@ -6,12 +6,12 @@ import { defineConfig, loadEnv } from 'vite';
  * structured data can never drift apart.
  */
 const SITE = {
-  name: 'Teela Digital',
-  title: 'Teela Digital — Ideas, engineered beautifully.',
+  name: 'Teela Tech',
+  title: 'Teela Tech — Ideas, engineered beautifully.',
   description:
-    'Teela Digital is a digital product and software company helping ambitious businesses turn ideas into thoughtful, functional digital experiences. Research × Design × Engineering.',
+    'Teela Tech is a digital product and software company helping ambitious businesses turn ideas into thoughtful, functional digital experiences. Research × Design × Engineering.',
   image: '/og-image.png',
-  imageAlt: 'Teela Digital — Ideas, engineered beautifully.',
+  imageAlt: 'Teela Tech — Ideas, engineered beautifully.',
   twitterCard: 'summary_large_image',
   themeColor: '#111111',
   address: {

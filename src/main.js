@@ -1,5 +1,5 @@
 /* ============================================================
-   TEELA DIGITAL — Main Application
+   TEELA TECH — Main Application
    ============================================================ */
 
 import { initScrollReveal } from './modules/scroll-reveal.js';
