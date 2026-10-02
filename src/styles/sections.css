@@ -1208,16 +1208,16 @@
 }
 
 .footer__logo-img {
-  height: 36px;
+  height: 50px;
   width: auto;
   display: block;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  transition: filter var(--duration-fast);
+  transition: transform var(--duration-fast), opacity var(--duration-fast);
 }
 
 .footer__logo:hover .footer__logo-img {
-  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(5deg);
+  transform: scale(1.02);
+  opacity: 0.92;
 }
 
 /* Social Links */
