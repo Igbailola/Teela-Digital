@@ -191,6 +191,15 @@
   z-index: 10000;
   position: relative;
   transition: color var(--duration-fast);
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* Navigation toggle (mobile) */
